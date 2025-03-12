@@ -1,0 +1,25 @@
+// Color variables
+$green-level-1: #3E432E;
+$green-level-2: #616F39;
+$green-level-3: #A7D129;
+
+// Background colors
+$background-light: #ffffff;
+$background-dark: #000000;
+
+// Text colors
+$foreground-light: #171717;
+$foreground-dark: #ededed;
+
+// Root CSS variables
+:root {
+  --background: #{$background-light};
+  --foreground: #{$foreground-light};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #{$background-dark};
+    --foreground: #{$foreground-dark};
+  }
+}
