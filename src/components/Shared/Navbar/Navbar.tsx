@@ -5,6 +5,9 @@ export const Navbar = () =>{
         <div className={styles.Navbar}>
             <ul>
                 <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
+                <li>Home</li>
             </ul>
         </div>
     );
