@@ -3,12 +3,14 @@ import styles from './PreviewFile.module.scss';
 import Papa, { ParseResult } from 'papaparse';
 import { useState, ChangeEvent } from 'react';
 import { UploadFileInput } from '../UploadFileInput';
+import { Datatable } from '../DataTable';
 
 interface CSVRow {
     [key: string]: string | number | boolean | null;
-}
-  
+};
 
+const title = "Vista previa del archivo";
+  
 export const PreviewFile = () =>{
     const [parsedData, setParsedData] = useState<CSVRow[]>([]);
 
@@ -31,28 +33,8 @@ export const PreviewFile = () =>{
 
             {parsedData.length > 0 && (
                 <div className={styles.PreviewContainer}>
-                    <h2 className={styles.PreviewContainer__Subtitle}>Preview del archivo</h2>
-                    <div className={styles.TableContainer}>
-                        <table>
-                            <thead>
-                                <tr>
-                                    {Object.keys(parsedData[0]).map((header) => (
-                                        <th key={header}>{header}</th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {parsedData.map((row, index) => (
-                                    <tr key={index}>
-                                        {Object.values(row).map((value, i) => (
-                                            <td key={i}>{value}</td>
-                                        ))}
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                    
+                    <h2 className={styles.PreviewContainer__Subtitle}>{title}</h2>
+                    <Datatable data={parsedData}/>                    
                 </div>
             )}
         </>

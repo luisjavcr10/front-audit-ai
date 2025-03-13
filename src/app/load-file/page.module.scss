@@ -26,27 +26,5 @@
     .custom-file-upload:hover {
         background-color: var(--green-level-1);
     }
-
-    &__PreviewContainer{
-        background-color: var(--bg-navbar);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        max-width: 90%;
-        gap: 20px;
-        border-radius: 20px;
-        padding: 20px;
-
-        &__Subtitle{
-            color: var(--green-level-1);
-            font-size: 30px;
-        }
-    }    
-
-    &__TableContainer{
-        max-width: 90%;
-        overflow-x: auto; 
-        white-space: nowrap;
-    }
+  
 }
