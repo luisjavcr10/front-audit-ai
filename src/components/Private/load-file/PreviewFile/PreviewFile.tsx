@@ -26,10 +26,41 @@ export const PreviewFile = () =>{
             });
         }
     };
+
+    const handleUpload = async (event: ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        const type= "csv"
+        if (!file) {
+            alert("Por favor selecciona un archivo.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+        //formData.append("type", type); // Parámetro adicional
+
+        try {
+            console.log('FormData being sent:', formData);
+            const res = await fetch(`https://backend-audit-ai.onrender.com/convertToJson?type=${type}`, {
+                method: "POST",
+                body: formData, // Enviar como FormData
+            });
+
+            if (!res.ok) throw new Error("Error al subir el archivo");
+
+            const data = await res.json(); // Convertir la respuesta a JSON
+            console.log(data);
+            setParsedData(data);
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Hubo un problema al subir el archivo.");
+        }
+    };
+
     
     return(
         <>
-            <UploadFileInput onChange={handleFileUpload}/>
+            <UploadFileInput onChange={handleUpload}/>
 
             {parsedData.length > 0 && (
                 <div className={styles.PreviewContainer}>
