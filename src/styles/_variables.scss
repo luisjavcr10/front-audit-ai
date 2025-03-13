@@ -10,16 +10,3 @@ $background-dark: #000000;
 // Text colors
 $foreground-light: #171717;
 $foreground-dark: #ededed;
-
-// Root CSS variables
-:root {
-  --background: #{$background-light};
-  --foreground: #{$foreground-light};
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #{$background-dark};
-    --foreground: #{$foreground-dark};
-  }
-}
