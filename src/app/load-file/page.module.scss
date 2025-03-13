@@ -1,0 +1,52 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 40px;
+    justify-content: center;
+    align-items: center;
+
+    input{
+        background-color: var(--bg-navbar);
+    }
+    input[type="file"]{
+        display: none;
+    }
+    
+    .custom-file-upload {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+        background-color: var(--bg-navbar);
+        color: white;
+        border-radius: 4px;
+    }
+    
+    .custom-file-upload:hover {
+        background-color: var(--green-level-1);
+    }
+
+    &__PreviewContainer{
+        background-color: var(--bg-navbar);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 90%;
+        gap: 20px;
+        border-radius: 20px;
+        padding: 20px;
+
+        &__Subtitle{
+            color: var(--green-level-1);
+            font-size: 30px;
+        }
+    }    
+
+    &__TableContainer{
+        max-width: 90%;
+        overflow-x: auto; 
+        white-space: nowrap;
+    }
+}
