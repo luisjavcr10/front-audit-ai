@@ -8,6 +8,7 @@
   --green-level-1:#{$green-level-1};
   --green-level-2:#{$green-level-2};
   --green-level-3:#{$green-level-3};
+  --gradient: #{$gradient-to-right-dark};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,6 +16,7 @@
     --background: #{$background-dark};
     --foreground: #{$foreground-dark};
     --bg-navbar:#{$green-level-1};
+    --gradient: #{$gradient-to-right-dark};
   }
 }
 

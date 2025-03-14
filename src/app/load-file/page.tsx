@@ -6,7 +6,7 @@ export default function LoadFile() {
     return (
         <div className={styles.page}>
             
-            <h1>Carga tu CSV</h1>
+            <h1>Carga el archivo a auditar</h1>
 
             <PreviewFile/>
             
