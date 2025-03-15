@@ -3,19 +3,34 @@
     height: 400px;
     overflow-x: auto; 
     white-space: nowrap;
-    border-radius: 20px;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: var(--green-level-1);
 
     table{
-        background-color: var(--background);
+        background-color: var(--green-level-1);
+        padding: 10px;
+        font-size: 12px;
+        border-collapse: collapse; 
+        border-spacing: 0;
     }
 
     thead{
-        padding: 20px;
+        background-color: var(--green-level-2);
+        padding: 0;
+        margin: 0;
+        border-radius: 10px 10px 0 0; 
+        overflow: hidden; 
         
-        th {
-            margin: 0 10px;
-            padding: 10px 15px;
-            border-bottom: 2px solid white;
+        tr {
+            display: table-row;
+        }
+        
+        th { 
+            margin: 0; 
+            padding: 10px 5px;
+            border-collapse: collapse;
+            border-spacing: 0;
         }
     }
 
