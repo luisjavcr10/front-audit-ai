@@ -12,7 +12,7 @@ export const Datatable = ({data}: Readonly<{data: CSVRow[]}>) =>{
                 <thead>
                     <tr>
                         {Object.keys(data[0]).map((header) => (
-                            <th key={header}>{header}</th>
+                            <th key={header}>{header.toUpperCase()}</th>
                         ))}
                     </tr>
                 </thead>

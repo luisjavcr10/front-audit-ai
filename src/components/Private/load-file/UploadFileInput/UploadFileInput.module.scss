@@ -1,4 +1,11 @@
 .UploadFileInput{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 10px;
+
     input{
         background-color: var(--bg-navbar);
     }
@@ -7,16 +14,43 @@
     }
     
     .custom-file-upload {
-        border: 1px solid #ccc;
+        border: 1px solid var(--green-level-1);
         display: inline-block;
         padding: 6px 12px;
         cursor: pointer;
-        background-color: var(--bg-navbar);
-        color: white;
-        border-radius: 4px;
+        background-color: var(--green-level-1);
+        color:  #FFF0D1;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 10px;
+        box-shadow: 0 0 5px 1px var(--green-level-2);
+        transition-duration: 500ms;
+        transition-property: scale, background-color, color;
     }
     
     .custom-file-upload:hover {
+        scale:1.1;
+        background-color: var(--green-level-2);
+        color:  var(--green-level-3);
+        transition-duration: 1s;
+    }
+
+    &__DriveButton{
+        border: 1px solid var(--green-level-1);
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
         background-color: var(--green-level-1);
+        color:  #FFF0D1;
+        border-radius: 10px;
+        box-shadow: 0 0 5px 1px var(--green-level-2);
+        transition-duration: 500ms;
+        transition-property: scale, background-color, color;
+        &:hover{
+            scale:1.2;
+            background-color: var(--green-level-2);
+            color:  var(--green-level-3);
+            transition-duration: 1s;
+        }
     }
 }
