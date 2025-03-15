@@ -1,0 +1,31 @@
+.page{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    textarea{
+        background-color: black;
+        border-radius: 15px;
+        border: 2px solid var(--green-level-1);
+        color: white;
+        padding: 10px;
+        outline-color: var(--green-level-1);
+        outline-style: dashed;
+    }
+
+    &__SendButton{
+        background-color: var(--green-level-2);
+        width: 100px;
+        padding: 5px 10px;
+        border-radius: 15px;
+        transition-duration: 1s;
+        &:hover{
+            scale: 1.1;
+            background-color: var(--green-level-3);
+        }
+        border: none;
+    }
+}
