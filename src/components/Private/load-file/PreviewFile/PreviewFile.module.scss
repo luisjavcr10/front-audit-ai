@@ -1,0 +1,14 @@
+.PreviewContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+    &__Subtitle{
+        color:#FFF0D1;
+        font-size: 20px;
+        font-weight: 500;
+    }
+} 

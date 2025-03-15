@@ -1,0 +1,16 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 40px;
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        background: var(--gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+  
+}
