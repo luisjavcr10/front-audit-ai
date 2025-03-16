@@ -1,7 +1,7 @@
 import styles from "./UploadFileInput.module.scss";
 import { FaGoogleDrive } from "react-icons/fa";
 
-export const UploadFileInput = ({ onChangeLocal, googleDrive }: Readonly<{ onChangeLocal: React.ChangeEventHandler; googleDrive: any }>) => {
+export const UploadFileInput = ({ onChangeLocal, googleDrive }: Readonly<{ onChangeLocal: React.ChangeEventHandler; googleDrive: () => void }>) => {
     return (
         <div className={styles.UploadFileInput}>
             <input type="file" id="file-upload" accept=".csv" onChange={onChangeLocal} />
