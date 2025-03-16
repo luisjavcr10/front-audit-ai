@@ -1,9 +1,11 @@
 "use client"
 import styles from './PreviewFile.module.scss';
+import Link from 'next/link';
 import { useState, ChangeEvent, useEffect } from 'react';
 import { UploadFileInput } from '../UploadFileInput';
 import { Datatable } from '../DataTable';
 import { loadGoogleIdentityServices, authenticateGoogle, loadGooglePickerAPI, showGooglePicker, downloadFileFromDrive } from '../../../../services/googleDriveService';
+import { WindowWithGoogleAPIs } from '../../../../types/google-api';
 import { uploadFileToBackend } from '../../../../services/apiService';
 
 interface CSVRow {
@@ -43,7 +45,7 @@ export const PreviewFile = () =>{
     const loadAndShowPicker = async (token: string) => {
         await loadGooglePickerAPI();
         showGooglePicker(token, async (data) => {
-            if (data.action === (window as any).google.picker.Action.PICKED) {
+            if (data.action === ((window as unknown) as WindowWithGoogleAPIs).google.picker.Action.PICKED) {
                 //Seleccionamos el primer archivo
                 const file = data.docs[0];
                 try {
@@ -122,8 +124,17 @@ export const PreviewFile = () =>{
             {parsedData.length > 0 && (
                 <div className={styles.PreviewContainer}>
                     <h2 className={styles.PreviewContainer__Subtitle}>{title}</h2>
-                    <Datatable data={parsedData}/>                    
+                    <Datatable data={parsedData}/>    
+                    <Link 
+                        href='/prompt'
+                        onClick={() => {
+                            localStorage.setItem('parsedData', JSON.stringify(parsedData));
+                        }}
+                    >
+                        Enviar datos a análisis
+                    </Link>                
                 </div>
+                
             )}
         </>
     )

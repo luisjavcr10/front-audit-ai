@@ -1,9 +1,10 @@
-import { TableHeroUI } from "@/components/HeroUI/TableHeroUI";
+import { Dashboard } from "@/components/Dashboard";
+import styles from './page.module.scss';
 
 export default function Test (){
     return(
-        <div>
-            <TableHeroUI/>
+        <div className={styles.page}>
+            <Dashboard/>
         </div>
     );
 }

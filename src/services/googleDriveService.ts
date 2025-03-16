@@ -2,15 +2,9 @@
  * Servicio para manejar la integración con Google Drive
  */
 
-// Tipos para las respuestas de Google Drive
-interface GooglePickerResponse {
-  action: string;
-  docs: Array<{ id: string; name: string }>;
-}
+import { GooglePickerResponse, TokenResponse, WindowWithGoogleAPIs } from '../types/google-api';
 
-interface TokenResponse {
-  access_token: string;
-}
+// Local interfaces are now imported from types/google-api.ts
 
 /**
  * Carga el script de Google Identity Services
@@ -41,7 +35,7 @@ export const authenticateGoogle = (): Promise<string> => {
   return new Promise((resolve, reject) => {
     try {
       // Inicializar el flujo de autenticación con GIS
-      const tokenClient = (window as any).google.accounts.oauth2.initTokenClient({
+      const tokenClient = ((window as unknown) as WindowWithGoogleAPIs).google.accounts.oauth2.initTokenClient({
         client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
         scope: "https://www.googleapis.com/auth/drive.readonly",
         callback: (response: TokenResponse) => {
@@ -79,7 +73,7 @@ export const loadGooglePickerAPI = (): Promise<void> => {
     const pickerScript = document.createElement("script");
     pickerScript.src = "https://apis.google.com/js/api.js";
     pickerScript.onload = () => {
-      (window as any).gapi.load("picker", () => {
+      ((window as unknown) as WindowWithGoogleAPIs).gapi.load("picker", () => {
         resolve();
       });
     };
@@ -93,8 +87,9 @@ export const loadGooglePickerAPI = (): Promise<void> => {
  * @param callback Función a ejecutar cuando se selecciona un archivo
  */
 export const showGooglePicker = (token: string, callback: (response: GooglePickerResponse) => void): void => {
-  const picker = new (window as any).google.picker.PickerBuilder()
-    .addView((window as any).google.picker.ViewId.DOCS)
+  const googleWindow = ((window as unknown) as WindowWithGoogleAPIs);
+  const picker = new googleWindow.google.picker.PickerBuilder()
+    .addView(googleWindow.google.picker.ViewId.DOCS)
     .setOAuthToken(token)
     .setDeveloperKey(process.env.NEXT_PUBLIC_DEVELOP_KEY)
     .setCallback((data: GooglePickerResponse) => callback(data))

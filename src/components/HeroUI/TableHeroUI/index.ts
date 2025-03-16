@@ -1,1 +1,0 @@
-export {TableHeroUI} from './TableHeroUI';
