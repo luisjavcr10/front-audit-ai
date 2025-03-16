@@ -21,8 +21,10 @@ export interface GooglePickerViewId {
   DOCS_UPLOAD: string;
 }
 
+// Separar el constructor en un `type`
+export type GooglePickerBuilderConstructor = new () => GooglePickerBuilder;
+
 export interface GooglePickerBuilder {
-  new(): GooglePickerBuilder;
   addView(viewId: string): GooglePickerBuilder;
   setOAuthToken(token: string): GooglePickerBuilder;
   setDeveloperKey(key: string | undefined): GooglePickerBuilder;
@@ -73,7 +75,7 @@ export interface WindowWithGoogleAPIs extends Window {
     picker: {
       Action: GooglePickerAction;
       ViewId: GooglePickerViewId;
-      PickerBuilder: GooglePickerBuilder;
+      PickerBuilder: GooglePickerBuilderConstructor; // Usar el type aquí
     };
     accounts: {
       oauth2: {
