@@ -18,7 +18,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #{$color-black};
-    --background-navbar:#{$color-gray};
+    --background-navbar:#{$color-black};
     --background-table:#{$color-rat};
     --text: #{$color-white};
     --bg-navbar:#{$green-level-1};
@@ -55,3 +55,21 @@ a {
 //  max-width: 100%;
 //  height: auto;
 //}
+
+// Añade esto a tus estilos globales
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+// El contenido principal debe tener flex-grow para empujar el footer
+main {
+    flex: 1;
+}

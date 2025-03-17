@@ -1,14 +1,14 @@
 .Footer {
     display: flex;
-    position: fixed; 
-    bottom: 0; 
     width: 100%; 
+    background-color: var(--background-navbar);
     box-shadow: 0px 0px 5px 3px black;
     height: 50px;
     justify-content: space-between;
     align-items: center;
     padding: 0px 30px;
     z-index: 100; 
+    margin-top: auto; /* Esto empuja el footer hacia abajo */
 
     p {
         font-size: 12px;

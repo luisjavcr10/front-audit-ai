@@ -1,60 +1,79 @@
-.Navbar{
+.Navbar {
     display: flex;
-    justify-content:space-between;
-    padding: 0px 30px;
-    box-shadow: 0px 0px 5px 3px black;
+    justify-content: space-between;
     height: 50px;
+    padding: 40px 30px;
+    background-color: var(--background-navbar);
+    box-shadow: 0px 0px 5px 3px black;
     color: var(--text);
-
-    &__ImgContainer{
+    
+    @media (min-width: 768px) {
+        padding: 0px 30px;
+    }
+    
+    &__ImgContainer {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-
+    
     img {
         height: 40px;
         width: auto;
         object-fit: cover;
         object-position: center;
     }
-
-    ul{
+    
+    &__LeftSection {
         display: flex;
+        gap: 50px;
+    }
+    
+    ul {
+        display: none;
         align-items: center;
         gap: 50px;
+        
+        @media (min-width: 768px) {
+            display: flex;
+        }
     }
-
-    li{
+    
+    li {
         list-style: none;
     }
-
-    &__LinksContainer{
-        display: flex;
-        gap: 50px;
-    }
-
-    &__Link{
+    
+    &__Link {
         font-size: 12px;
         font-weight: 400;
-        &:hover{
+        
+        &:hover {
             color: var(--color-blue-level-2);
             font-weight: 600;
         }
-    }
 
-    &__ButtonsSection{
-        display: flex;
+        &.active {
+            color: var(--color-blue-level-2);
+            font-weight: 700;
+        }
+    }
+    
+    &__RightSection {
+        display: none;
         align-items: center;
         gap: 30px;
-
-        &__Icon{
-            color: var(--color-blue-level-2);
+        
+        @media (min-width: 768px) {
+            display: flex;
+        }
+        
+        &__Icon {
             width: 18px;
             height: 18px;
+            color: var(--color-blue-level-2);
         }
-
-        &__Access, &__Register{
+        
+        &__Access, &__Register {
             font-size: 12px;
             font-weight: 400;
             padding: 5px 10px;
@@ -62,20 +81,47 @@
             color: var(--text);
             border: none;
         }
-
-        &__Access{
+        
+        &__Access {
             background-color: transparent;
-            
-            &:hover{
+            transition-duration: 300ms;
+            transition-property: scale;
+            &:hover {
+                scale:1.1;
                 background-color: black;
+                box-shadow: 0 0 2px 1px black;
+                transition-duration: 1s;
             }
         }
-
-        &__Register{
+        
+        &__Register {
             background-color: var(--color-blue-level-2);
-            &:hover{
+            transition-duration: 300ms;
+            transition-property: scale;
+            &:hover {
+                scale:1.1;
                 background-color: var(--color-blue-level-3);
+                box-shadow: 0 0 2px 1px var(--color-blue-level-3);
+                transition-duration: 1s;
             }
+        }
+    }
+    
+    /* Mobile menu */
+    &__Menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        
+        @media (min-width: 768px) {
+            display: none;
+        }
+        
+        &__Icon {
+            width: 40px;
+            height: 40px;
+            color: var(--text);
         }
     }
 }

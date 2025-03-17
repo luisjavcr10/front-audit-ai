@@ -1,27 +1,27 @@
 import styles from './Navbar.module.scss';
-import Link from 'next/link';
-import { MdOutlineTranslate, MdOutlineLightMode } from "react-icons/md";
+
+import { Logotipo } from './Logotipo';
+import { Links } from './Links';
+import { Buttons } from './Buttons';
+import { ToggleMenu } from './ToggleMenu';
 
 export const Navbar = () =>{
     return(
         <nav className={styles.Navbar}>
-            <div className={styles.Navbar__LinksContainer}>
-                <div className={styles.Navbar__ImgContainer}>
-                    <img src="/images/logo.jpg" alt="logotipo" />
-                </div>
-                <ul>
-                    <li><Link className={styles.Navbar__Link} href="/">Home</Link></li>
-                    <li><Link className={styles.Navbar__Link} href="/load-file">LoadFile</Link></li>
-                    <li><Link className={styles.Navbar__Link} href="/prompt">Prompt</Link></li>
-                </ul>
+            {/**Seccion del logotipo y enlaces */}
+            <div className={styles.Navbar__LeftSection}>
+                <Logotipo/>
+                <Links/>
             </div>
             
-            <div className={styles.Navbar__ButtonsSection}>
-                <MdOutlineLightMode className={styles.Navbar__ButtonsSection__Icon}/>
-                <MdOutlineTranslate className={styles.Navbar__ButtonsSection__Icon}/>
-                <a href='' className={styles.Navbar__ButtonsSection__Access}>Access</a>
-                <a href='' className={styles.Navbar__ButtonsSection__Register}>Register</a>
+            {/**Seccion de botones para cambio de tema o idioma y login */}
+            <div className={styles.Navbar__RightSection}>
+                <Buttons/>
             </div>
+
+            {/**Menu para dispositivos mobiles */}
+            <ToggleMenu/>
+            
         </nav>
     );
 };

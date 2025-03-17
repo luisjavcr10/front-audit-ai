@@ -7,10 +7,10 @@ const subtitle = "Upload your files (CSV, Excel, PDF) and let AI audit them for 
 export default function LoadFile() {
 
     return (
-        <div className={styles.page}>
+        <main className={styles.page}>
             <h1>{title}</h1>
             <p>{subtitle}</p>
             <PreviewFile/>
-        </div>
+        </main>
     );
 }
