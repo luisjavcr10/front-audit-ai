@@ -4,23 +4,25 @@
     overflow-x: auto; 
     white-space: nowrap;
     border-radius: 15px;
-    padding: 10px;
-    background-color: var(--green-level-1);
+    position: relative;
 
     table{
-        background-color: var(--green-level-1);
-        padding: 10px;
+        background-color: #373737;
         font-size: 12px;
-        border-collapse: collapse; 
+        border-collapse: separate; 
         border-spacing: 0;
+        width: 100%; 
     }
 
     thead{
-        background-color: var(--green-level-2);
+        background-color: var(--color-blue-level-2);
         padding: 0;
         margin: 0;
         border-radius: 10px 10px 0 0; 
         overflow: hidden; 
+        position: sticky; 
+        top: 0;
+        z-index: 10; 
         
         tr {
             display: table-row;
@@ -29,8 +31,8 @@
         th { 
             margin: 0; 
             padding: 10px 5px;
-            border-collapse: collapse;
             border-spacing: 0;
+            background-color: inherit;
         }
     }
 
