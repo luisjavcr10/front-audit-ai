@@ -11,8 +11,6 @@ import { uploadFileToBackend } from '../../../../services/apiService';
 interface CSVRow {
     [key: string]: string | number | boolean | null;
 };
-
-const title = "Vista previa del archivo";
   
 export const PreviewFile = () =>{
     const [parsedData, setParsedData] = useState<CSVRow[]>([]);

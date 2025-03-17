@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Be_Vietnam_Pro, Inter } from "next/font/google";
+import { Be_Vietnam_Pro } from "next/font/google";
 import "@/styles/main.scss";
 import { Footer } from "@/components/Shared/Footer";
 import { Navbar } from "@/components/Shared/Navbar";
