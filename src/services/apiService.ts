@@ -5,6 +5,11 @@
 // URL base del backend
 const API_BASE_URL = "https://backend-audit-ai.onrender.com";
 
+// Define an interface for the row data
+interface CSVRow {
+  [key: string]: string | number | boolean | null;
+}
+
 /**
  * Sube un archivo al backend y lo convierte a JSON
  * @param fileBlob Blob del archivo a subir
@@ -16,7 +21,7 @@ export const uploadFileToBackend = async (
   fileBlob: Blob, 
   fileName: string, 
   fileType: string = "csv"
-): Promise<any> => {
+): Promise<CSVRow[]> => {
   const formData = new FormData();
   formData.append("file", fileBlob, fileName);
   formData.append("type", fileType);

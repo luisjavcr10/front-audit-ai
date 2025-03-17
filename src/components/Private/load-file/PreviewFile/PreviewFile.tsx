@@ -123,7 +123,6 @@ export const PreviewFile = () =>{
 
             {parsedData.length > 0 && (
                 <div className={styles.PreviewContainer}>
-                    <h2 className={styles.PreviewContainer__Subtitle}>{title}</h2>
                     <Datatable data={parsedData}/>    
                     <Link 
                         href='/prompt'

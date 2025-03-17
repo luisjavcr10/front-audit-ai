@@ -2,8 +2,12 @@
 
 // Root CSS variables
 :root {
-  --background: #{$background-light};
-  --foreground: #{$foreground-light};
+  --background: #{$color-gray};
+  --background-navbar:#{$color-white};
+  --background-table:#{$color-white};
+  --text: #{$foreground-light};
+  --color-blue-level-2:#{$color-blue-level-2};
+  --color-blue-level-3:#{$color-blue-level-3};
   --bg-navbar:#{$green-level-1};
   --green-level-1:#{$green-level-1};
   --green-level-2:#{$green-level-2};
@@ -13,8 +17,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #{$background-dark};
-    --foreground: #{$foreground-dark};
+    --background: #{$color-black};
+    --background-navbar:#{$color-gray};
+    --background-table:#{$color-rat};
+    --text: #{$color-white};
     --bg-navbar:#{$green-level-1};
     --gradient: #{$gradient-to-right-dark};
   }
@@ -28,9 +34,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
+  color: var(--text);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -46,7 +51,7 @@ a {
   text-decoration: none;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+//img {
+//  max-width: 100%;
+//  height: auto;
+//}

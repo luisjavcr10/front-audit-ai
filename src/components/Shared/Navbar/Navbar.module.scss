@@ -1,57 +1,81 @@
 .Navbar{
     display: flex;
-    flex-direction: row;
     justify-content:space-between;
-    border-bottom: 0.2px solid var(--green-level-2);
-    padding: 15px 100px;
+    padding: 0px 30px;
+    box-shadow: 0px 0px 5px 3px black;
+    height: 50px;
+    color: var(--text);
+
+    &__ImgContainer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    img {
+        height: 40px;
+        width: auto;
+        object-fit: cover;
+        object-position: center;
+    }
 
     ul{
         display: flex;
-        flex-direction: row;
-        justify-content: center;
         align-items: center;
-        gap: 40px;
+        gap: 50px;
+    }
+
+    li{
+        list-style: none;
     }
 
     &__LinksContainer{
         display: flex;
-        flex-direction: row;
-        gap:40px
-    }
-
-    &__Name{
-        font-size: 17px;
-        font-weight: 600;
-        background: var(--gradient);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        gap: 50px;
     }
 
     &__Link{
-        font-size: 15px;
+        font-size: 12px;
         font-weight: 400;
-        color: var(--green-level-2);
         &:hover{
-            color: var(--green-level-3);
+            color: var(--color-blue-level-2);
             font-weight: 600;
         }
     }
 
-    &__Buttons{
+    &__ButtonsSection{
         display: flex;
-        flex-direction: row;
-        justify-content: center;
         align-items: center;
-        gap: 20px;
-        color: var(--green-level-2);
+        gap: 30px;
+
         &__Icon{
-            width: 20px;
-            height: 20px;
+            color: var(--color-blue-level-2);
+            width: 18px;
+            height: 18px;
+        }
+
+        &__Access, &__Register{
+            font-size: 12px;
+            font-weight: 400;
+            padding: 5px 10px;
+            border-radius: 6px;
+            color: var(--text);
+            border: none;
+        }
+
+        &__Access{
+            background-color: transparent;
+            
             &:hover{
-                color: var(--green-level-3);
+                background-color: black;
             }
         }
-        
+
+        &__Register{
+            background-color: var(--color-blue-level-2);
+            &:hover{
+                background-color: var(--color-blue-level-3);
+            }
+        }
     }
 }
