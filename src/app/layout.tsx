@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Be_Vietnam_Pro, Inter } from "next/font/google";
 import "@/styles/main.scss";
 import { Footer } from "@/components/Shared/Footer";
 import { Navbar } from "@/components/Shared/Navbar";
 
-const inter = Inter({
+const beVietmanPro= Be_Vietnam_Pro({
   weight:['100','200','300','400','500','600','700','800','900'],
   style:['italic','normal'],
   subsets:['latin'],
-});
+})
 
 export const metadata: Metadata = {
   title: "AuditAI",
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className={`${inter.className}`}>
+      <body className={`${beVietmanPro.className}`}>
         {/** Navbar */}
         <Navbar/>
 
