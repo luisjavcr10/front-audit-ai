@@ -25,6 +25,10 @@
         gap: 50px;
     }
 
+    li{
+        list-style: none;
+    }
+
     &__LinksContainer{
         display: flex;
         gap: 50px;
@@ -53,18 +57,25 @@
         &__Access, &__Register{
             font-size: 12px;
             font-weight: 400;
+            padding: 5px 10px;
+            border-radius: 6px;
             color: var(--text);
             border: none;
         }
 
         &__Access{
             background-color: transparent;
+            
+            &:hover{
+                background-color: black;
+            }
         }
 
         &__Register{
             background-color: var(--color-blue-level-2);
-            padding: 5px 10px;
-            border-radius: 5px;
+            &:hover{
+                background-color: var(--color-blue-level-3);
+            }
         }
     }
 }

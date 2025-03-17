@@ -10,9 +10,9 @@ export const Navbar = () =>{
                     <img src="/images/logo.jpg" alt="logotipo" />
                 </div>
                 <ul>
-                    <Link className={styles.Navbar__Link} href="">Home</Link>
-                    <Link className={styles.Navbar__Link} href="">Load</Link>
-                    <Link className={styles.Navbar__Link} href="">Stats</Link>
+                    <li><Link className={styles.Navbar__Link} href="/">Home</Link></li>
+                    <li><Link className={styles.Navbar__Link} href="/load-file">LoadFile</Link></li>
+                    <li><Link className={styles.Navbar__Link} href="/prompt">Prompt</Link></li>
                 </ul>
             </div>
             

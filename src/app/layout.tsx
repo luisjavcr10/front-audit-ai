@@ -12,7 +12,7 @@ const beVietmanPro= Be_Vietnam_Pro({
 
 export const metadata: Metadata = {
   title: "AuditAI",
-  description: "",
+  description: "App with deep seek api integration",
 };
 
 export default function RootLayout({

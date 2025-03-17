@@ -20,7 +20,6 @@ export const loadGoogleIdentityServices = (): Promise<void> => {
     const script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
     script.onload = () => {
-      console.log("Google Identity Services cargado");
       resolve();
     };
     document.body.appendChild(script);

@@ -1,56 +1,75 @@
 .UploadFileInput{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
     margin: 10px;
-
-    input{
-        background-color: var(--bg-navbar);
-    }
+    padding-top: 20px;
+    
     input[type="file"]{
         display: none;
     }
     
     .custom-file-upload {
-        border: 1px solid var(--green-level-1);
+        background-color: var(--color-blue-level-2);
         display: inline-block;
-        padding: 6px 12px;
+        padding: 40px;
         cursor: pointer;
-        background-color: var(--green-level-1);
-        color:  #FFF0D1;
-        font-size: 15px;
-        font-weight: 600;
+        font-size: 32px;
+        font-weight: 500;
         border-radius: 10px;
-        box-shadow: 0 0 5px 1px var(--green-level-2);
         transition-duration: 500ms;
-        transition-property: scale, background-color, color;
+        transition-property: scale, background-color;
     }
     
     .custom-file-upload:hover {
-        scale:1.1;
-        background-color: var(--green-level-2);
-        color:  var(--green-level-3);
-        transition-duration: 1s;
+        scale:1.02;
+        background-color: var(--color-blue-level-3);
+        box-shadow: 0 0 10px 1px var(--color-blue-level-2);
+        transition-duration: 2s;
     }
 
-    &__DriveButton{
-        border: 1px solid var(--green-level-1);
-        display: inline-block;
-        padding: 6px 12px;
-        cursor: pointer;
-        background-color: var(--green-level-1);
-        color:  #FFF0D1;
-        border-radius: 10px;
-        box-shadow: 0 0 5px 1px var(--green-level-2);
-        transition-duration: 500ms;
-        transition-property: scale, background-color, color;
-        &:hover{
-            scale:1.2;
-            background-color: var(--green-level-2);
-            color:  var(--green-level-3);
-            transition-duration: 1s;
+    p{
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    &__ButtonsSection{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin: 10px;
+        padding-top: 20px;
+
+        &__DriveButton{
+            background-color: var(--color-blue-level-2);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition-duration: 500ms;
+            transition-property: scale, background-color;
+        
+            &:hover{
+                scale: 1.2;
+                background-color: var(--color-blue-level-3);
+                box-shadow: 0 0 10px 1px var(--color-blue-level-2);
+                transition-duration: 2s;
+            }
+    
+            &__Icon{
+                width: 40px;
+                height: 40px;
+                color: var(--text);
+            }
         }
     }
+
+    
 }
