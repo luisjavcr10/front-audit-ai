@@ -1,0 +1,22 @@
+.FeatureCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--background-table);
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 0.5px #FFFFFF;
+
+    &__Title{
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    &__Subtitle{
+        font-size: 15px;
+        font-weight: 400;
+        text-align: center;
+    }
+}
