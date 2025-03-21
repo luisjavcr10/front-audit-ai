@@ -1,0 +1,92 @@
+.page{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 40px;
+    gap: 20px;
+    color: var(--text);
+
+    button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 40px;
+        font-size: 24px;
+        font-weight: 400;
+        color: var(--text);
+        background-color: var(--background-table);
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 4px 0.5px #FFFFFF;
+        gap: 15px;
+        width: 350px;
+    }
+
+    &__ButtonLogin{
+        margin-top: 20px;
+    }
+
+    form{
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        
+    }
+
+    &__ItemForm{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    label{
+        width: 100%;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    input{
+        background-color: var(--background-table);
+        border: none;
+        width: 100%;
+        height: 50px;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: var(--text);
+        outline: none;
+    }
+
+    h1{
+       font-size: 24px;
+       font-weight: 400;
+    }
+
+    h2{
+        font-size: 16px;
+        font-weight: 400;
+    }
+    
+    p{
+        font-size: 12px;
+        font-weight: 400;
+        text-align: center;
+        margin: 10px;
+    }
+
+    a{
+        color: var(--color-blue-level-3);
+        &:hover{
+            color: var(--color-blue-level-2);
+        }
+    }
+        
+}
