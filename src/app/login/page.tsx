@@ -45,7 +45,7 @@ export default function LogIn () {
             </h2>
 
             <p>
-                By continuing, you agree to AuditAI's Terms of Service and Privacy Policy.
+                By continuing, you agree to AuditAI&apos;s Terms of Service and Privacy Policy.
             </p>
         </main>
     )
