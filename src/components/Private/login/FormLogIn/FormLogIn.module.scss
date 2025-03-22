@@ -17,7 +17,7 @@
         justify-content: center;
         gap: 15px;
         width: 100%;
-    }
+    } 
 
     label{
         width: 100%;
@@ -25,6 +25,13 @@
         font-size: 16px;
         font-weight: 400;
     }
+
+    &__ForgotPassword{
+        width: 100%;
+        font-size: 12px;
+        text-align: left;
+        cursor: pointer;
+    }  
 
     input{
         background-color: var(--background-table);

@@ -34,15 +34,15 @@ export default function LogIn () {
                 {infoLogin.buttonGoogle.icon}
             </ButtonLogIn>
 
-            <h1>{infoLogin.separator}</h1>
+            <h1 className={styles.page__Separator}>{infoLogin.separator}</h1>
 
             <FormLogIn/>
 
-            <h2>
+            <h2 className={styles.page__NoAccount}>
                 {infoLogin.noAccount.text}<a href={infoLogin.noAccount.link}>{infoLogin.noAccount.linkText}</a>
             </h2>
 
-            <p>
+            <p className={styles.page__Terms}>
                 {infoLogin.terms}
             </p>
 

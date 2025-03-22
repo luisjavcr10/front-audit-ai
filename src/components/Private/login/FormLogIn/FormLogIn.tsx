@@ -16,6 +16,7 @@ export const FormLogIn = () =>{
             <div className={styles.FormLogIn__ItemForm}>
                 <label>Password</label>
                 <input type="password" name="password" id="password" />
+                <p className={styles.FormLogIn__ForgotPassword}>Forgot your password?</p>
             </div>
             <ButtonLogIn type='local' text='Login'/>
         </form>
