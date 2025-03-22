@@ -3,27 +3,37 @@
 // Root CSS variables
 :root {
   --background: #{$color-gray};
-  --background-navbar:#{$color-white};
-  --background-table:#{$color-white};
+  --background-navbar: #{$color-white};
+  --background-table: #{$color-white};
   --text: #{$foreground-light};
-  --color-blue-level-2:#{$color-blue-level-2};
-  --color-blue-level-3:#{$color-blue-level-3};
-  --bg-navbar:#{$green-level-1};
-  --green-level-1:#{$green-level-1};
-  --green-level-2:#{$green-level-2};
-  --green-level-3:#{$green-level-3};
-  --gradient: #{$gradient-to-right-dark};
+  --color-blue-level-2: #{$color-blue-level-2};
+  --color-blue-level-3: #{$color-blue-level-3};
+  --shadow: #00000040;
 }
 
+/* 🌙 Soporte automático para el modo oscuro del sistema */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {  /* Solo si el usuario NO ha cambiado el tema manualmente */
     --background: #{$color-black};
-    --background-navbar:#{$color-black};
-    --background-table:#{$color-rat};
+    --background-navbar: #{$color-black};
+    --background-table: #{$color-rat};
     --text: #{$color-white};
-    --bg-navbar:#{$green-level-1};
-    --gradient: #{$gradient-to-right-dark};
   }
+}
+
+/* 🌟 Anulación manual del usuario */
+:root[data-theme="dark"] {
+  --background: #{$color-black};
+  --background-navbar: #{$color-black};
+  --background-table: #{$color-rat};
+  --text: #{$color-white};
+}
+
+:root[data-theme="light"] {
+  --background: #{$color-gray};
+  --background-navbar: #{$color-white};
+  --background-table: #{$color-white};
+  --text: #{$foreground-light};
 }
 
 // Essential HTML and body styles

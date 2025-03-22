@@ -1,52 +1,53 @@
-"use client"
-
 import styles from './page.module.scss';
-import Image from 'next/image';
 import { FaGoogle } from "react-icons/fa";
+import { FormLogIn } from '@/components/Private/login/FormLogIn';
+import { ButtonLogIn } from '@/components/Private/login/ButtonLogIn';
+import { ThemeButtonInLogin } from '@/components/Private/login/ThemeButtonInLogin';
+import { Logo } from '@/components/Shared/Logo';
+
+const infoLogin = {
+    image: {
+        src:'/images/logo.jpg',
+        alt: 'logo',
+    },
+    buttonGoogle: {
+        icon: <FaGoogle/>,
+        text: 'Continue with Google'
+    },
+    separator:'or',
+    noAccount: {
+        text:"Don't have an account? ",
+        link:'',
+        linkText:'Sign up'
+    },
+    terms:"By continuing, you agree to AuditAI's Terms of Service and Privacy Policy."
+} 
 
 export default function LogIn () {
-    const handleLogIn = () =>{
-        console.log('login');
-    }
 
     return(
         <main className={styles.page}>
-            <Image 
-                src='/images/logo.jpg'
-                alt='logo'
-                width={232}
-                height={70}
-            />
+            
+            <Logo whereUse='login'/>
 
-            <button className={styles.page__GoogleButton}>
-                <FaGoogle />
-                Continue with Google
-            </button>
+            <ButtonLogIn type='google' text={infoLogin.buttonGoogle.text}> 
+                {infoLogin.buttonGoogle.icon}
+            </ButtonLogIn>
 
-            <h1>or</h1>
+            <h1>{infoLogin.separator}</h1>
 
-            <form onSubmit={handleLogIn}>
-                <div className={styles.page__ItemForm}>
-                    <label>Email</label>
-                    <input type="email" name="email" id="email" />
-                </div>
-                <div className={styles.page__ItemForm}>
-                    <label>Password</label>
-                    <input type="password" name="password" id="password" />
-
-                </div>
-                <button className={styles.page__ButtonLogin} type='submit'>
-                    Login
-                </button>
-            </form>
+            <FormLogIn/>
 
             <h2>
-                Don&apos;t have an account? <a href=''>Sign up</a>
+                {infoLogin.noAccount.text}<a href={infoLogin.noAccount.link}>{infoLogin.noAccount.linkText}</a>
             </h2>
 
             <p>
-                By continuing, you agree to AuditAI&apos;s Terms of Service and Privacy Policy.
+                {infoLogin.terms}
             </p>
+
+            <ThemeButtonInLogin/>
+            
         </main>
     )
 }

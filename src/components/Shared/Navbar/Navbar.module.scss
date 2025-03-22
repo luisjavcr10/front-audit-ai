@@ -4,7 +4,7 @@
     height: 50px;
     padding: 40px 30px;
     background-color: var(--background-navbar);
-    box-shadow: 0px 0px 5px 3px black;
+    box-shadow: 0px 4px 4px 0px var(--shadow);
     color: var(--text);
     
     @media (min-width: 768px) {
@@ -61,6 +61,7 @@
     &__RightSection {
         display: none;
         align-items: center;
+        justify-content: center;
         gap: 30px;
         
         @media (min-width: 768px) {
@@ -78,7 +79,6 @@
             font-weight: 400;
             padding: 5px 10px;
             border-radius: 6px;
-            color: var(--text);
             border: none;
         }
         
@@ -86,10 +86,11 @@
             background-color: transparent;
             transition-duration: 300ms;
             transition-property: scale;
+            color: var(--text);
             &:hover {
                 scale:1.1;
-                background-color: black;
-                box-shadow: 0 0 2px 1px black;
+                background-color: var(--background);
+                box-shadow: 0 0 2px 1px var(--background);
                 transition-duration: 1s;
             }
         }
@@ -98,6 +99,7 @@
             background-color: var(--color-blue-level-2);
             transition-duration: 300ms;
             transition-property: scale;
+            color: #FFFFFF;
             &:hover {
                 scale:1.1;
                 background-color: var(--color-blue-level-3);

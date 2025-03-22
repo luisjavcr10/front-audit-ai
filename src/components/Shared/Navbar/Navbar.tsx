@@ -1,8 +1,6 @@
-"use client"; // Solo el Navbar es client-side
-
+"use client";
 import { usePathname } from "next/navigation";
 import styles from './Navbar.module.scss';
-
 import { Logotipo } from './Logotipo';
 import { Links } from './Links';
 import { Buttons } from './Buttons';
@@ -11,7 +9,6 @@ import { ToggleMenu } from './ToggleMenu';
 export const Navbar = () =>{
     const pathname = usePathname();
 
-    // No mostrar el Navbar en la página de login
     if (pathname === "/login") return null;
 
     return(
