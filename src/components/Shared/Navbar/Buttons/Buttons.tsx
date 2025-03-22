@@ -1,6 +1,6 @@
 import styles from '../Navbar.module.scss';
 import { ThemeButton } from '../ThemeButton';
-import { MdOutlineTranslate, MdOutlineLightMode } from "react-icons/md";
+import { MdOutlineTranslate } from "react-icons/md";
 
 export const Buttons = () =>{
     return(
