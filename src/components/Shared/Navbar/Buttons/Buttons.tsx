@@ -9,8 +9,8 @@ export const Buttons = () =>{
 
 
             <MdOutlineTranslate className={styles.Navbar__RightSection__Icon}/>
-            <a href='' className={styles.Navbar__RightSection__Access}>Access</a>
-            <a href='' className={styles.Navbar__RightSection__Register}>Register</a>
+            <a href='/login' className={styles.Navbar__RightSection__Access}>Access</a>
+            <a href='/login' className={styles.Navbar__RightSection__Register}>Register</a>
         </>
     );
 }
