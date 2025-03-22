@@ -8,22 +8,6 @@
     gap: 20px;
     color: var(--text);
 
-    button{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px 40px;
-        font-size: 24px;
-        font-weight: 400;
-        color: var(--text);
-        background-color: var(--background-table);
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 0 4px 0.5px #FFFFFF;
-        gap: 15px;
-        width: 350px;
-    }
-
     h1{
        font-size: 24px;
        font-weight: 400;

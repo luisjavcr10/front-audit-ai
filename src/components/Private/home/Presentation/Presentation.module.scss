@@ -27,6 +27,7 @@
         border-radius: 10px;
         transition-duration: 500ms;
         transition-property: scale, background-color;
+        color: #FFFFFF;
         &:hover{
             scale:1.1;
             background-color: var(--color-blue-level-3);

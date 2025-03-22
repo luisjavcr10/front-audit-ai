@@ -2,7 +2,7 @@
     display: flex;
     width: 100%; 
     background-color: var(--background-navbar);
-    box-shadow: 0px 0px 5px 3px black;
+    box-shadow: 0px 0px 5px 3px var(--shadow);
     height: 50px;
     justify-content: space-between;
     align-items: center;

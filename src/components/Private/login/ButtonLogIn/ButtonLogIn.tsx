@@ -1,6 +1,7 @@
 import styles from './ButtonLogIn.module.scss';
+import { ReactNode } from 'react';
 
-export const ButtonLogIn = ({children, text, type}: Readonly<{children?:React.ReactElement; text: string; type:string}>) => {
+export const ButtonLogIn = ({children, text, type}: Readonly<{children?:ReactNode; text: string; type:string}>) => {
     return(
         <button 
             className={styles.ButtonLogIn} 

@@ -1,8 +1,9 @@
 import styles from './page.module.scss';
-import Image from 'next/image';
 import { FaGoogle } from "react-icons/fa";
 import { FormLogIn } from '@/components/Private/login/FormLogIn';
 import { ButtonLogIn } from '@/components/Private/login/ButtonLogIn';
+import { ThemeButtonInLogin } from '@/components/Private/login/ThemeButtonInLogin';
+import { Logo } from '@/components/Shared/Logo';
 
 const infoLogin = {
     image: {
@@ -26,12 +27,8 @@ export default function LogIn () {
 
     return(
         <main className={styles.page}>
-            <Image 
-                src={infoLogin.image.src}
-                alt={infoLogin.image.alt}
-                width={232}
-                height={70}
-            />
+            
+            <Logo whereUse='login'/>
 
             <ButtonLogIn type='google' text={infoLogin.buttonGoogle.text}> 
                 {infoLogin.buttonGoogle.icon}
@@ -48,6 +45,9 @@ export default function LogIn () {
             <p>
                 {infoLogin.terms}
             </p>
+
+            <ThemeButtonInLogin/>
+            
         </main>
     )
 }
