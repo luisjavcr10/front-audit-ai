@@ -13,7 +13,7 @@ export default function Register() {
         <main className={styles.page}>
 
             <div className={styles.page__LeftContainer}>
-                <Logo whereUse={infoRegister.typeLogo}/>
+                <Logo whereUse={"register"}/>
                 <ButtonForm type={infoRegister.button.type} text={infoRegister.button.text}> 
                     {infoRegister.button.icon}
                 </ButtonForm>

@@ -11,7 +11,7 @@ import { infoLogin } from '@/constants/infoLogin';
 export default function LogIn() {
     return (
         <main className={styles.page}>
-            <Logo whereUse={infoLogin.typeLogo} />
+            <Logo whereUse={"login"} />
 
             <ButtonForm type={infoLogin.button.type} text={infoLogin.button.text}> 
                 {infoLogin.button.icon}
