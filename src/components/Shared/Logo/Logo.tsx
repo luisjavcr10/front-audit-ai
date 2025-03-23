@@ -23,7 +23,7 @@ export const Logo = ({whereUse}: Readonly<{whereUse: string}>) =>{
                 alt='Logo'
                 width={width}
                 height={height}
-                quality={100}
+                quality={80}
                 />
             </Link>
         )    
@@ -35,7 +35,7 @@ export const Logo = ({whereUse}: Readonly<{whereUse: string}>) =>{
                 alt='Logo'
                 width={width}
                 height={height}
-                quality={100}
+                quality={80}
                 />
             </Link>
         )
