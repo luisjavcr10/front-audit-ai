@@ -6,11 +6,9 @@ export const Buttons = () =>{
     return(
         <>
             <ThemeButton/>
-
-
             <MdOutlineTranslate className={styles.Navbar__RightSection__Icon}/>
             <a href='/login' className={styles.Navbar__RightSection__Access}>Access</a>
-            <a href='/login' className={styles.Navbar__RightSection__Register}>Register</a>
+            <a href='/register' className={styles.Navbar__RightSection__Register}>Register</a>
         </>
     );
 }

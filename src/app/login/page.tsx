@@ -1,53 +1,38 @@
+import Link from 'next/link';
 import styles from './page.module.scss';
-import { FaGoogle } from "react-icons/fa";
-import { FormLogIn } from '@/components/Private/login/FormLogIn';
-import { ButtonLogIn } from '@/components/Private/login/ButtonLogIn';
-import { ThemeButtonInLogin } from '@/components/Private/login/ThemeButtonInLogin';
+
+import { ButtonForm } from '@/components/Shared/ButtonForm';
 import { Logo } from '@/components/Shared/Logo';
+import { FormLogIn } from '@/components/Private/login/FormLogIn';
+import { ThemeButtonInLogin } from '@/components/Private/login/ThemeButtonInLogin';
 
-const infoLogin = {
-    image: {
-        src:'/images/logo.jpg',
-        alt: 'logo',
-    },
-    buttonGoogle: {
-        icon: <FaGoogle/>,
-        text: 'Continue with Google'
-    },
-    separator:'or',
-    noAccount: {
-        text:"Don't have an account? ",
-        link:'',
-        linkText:'Sign up'
-    },
-    terms:"By continuing, you agree to AuditAI's Terms of Service and Privacy Policy."
-} 
+import { infoLogin } from '@/constants/infoLogin';
 
-export default function LogIn () {
-
-    return(
+export default function LogIn() {
+    return (
         <main className={styles.page}>
-            
-            <Logo whereUse='login'/>
+            <Logo whereUse={infoLogin.typeLogo} />
 
-            <ButtonLogIn type='google' text={infoLogin.buttonGoogle.text}> 
-                {infoLogin.buttonGoogle.icon}
-            </ButtonLogIn>
+            <ButtonForm type={infoLogin.button.type} text={infoLogin.button.text}> 
+                {infoLogin.button.icon}
+            </ButtonForm>
 
-            <h1 className={styles.page__Separator}>{infoLogin.separator}</h1>
+            <p className={styles.page__Separator}>{infoLogin.separator}</p>
 
-            <FormLogIn/>
+            <FormLogIn />
 
-            <h2 className={styles.page__NoAccount}>
-                {infoLogin.noAccount.text}<a href={infoLogin.noAccount.link}>{infoLogin.noAccount.linkText}</a>
-            </h2>
+            <p className={styles.page__NoAccount}>
+                {infoLogin.noAccount.text}
+                <Link href={infoLogin.noAccount.link}>
+                    {infoLogin.noAccount.linkText}
+                </Link>
+            </p>
 
             <p className={styles.page__Terms}>
                 {infoLogin.terms}
             </p>
 
-            <ThemeButtonInLogin/>
-            
+            <ThemeButtonInLogin />
         </main>
-    )
+    );
 }

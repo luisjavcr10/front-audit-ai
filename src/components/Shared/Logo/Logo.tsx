@@ -4,8 +4,15 @@ import { useTheme } from "@/context/ThemeContext";
 
 export const Logo = ({whereUse}: Readonly<{whereUse: string}>) =>{
     const {theme} = useTheme();
-    const width = whereUse === 'login' ? 232 : 117
-    const height = whereUse === 'login' ? 70 : 35
+    
+    const dimensions = {
+        login: { width: 232, height: 70 },
+        navbar: { width: 117, height: 35 },
+        register: { width: 474, height: 142 }
+    };
+
+    const width = dimensions[whereUse as keyof typeof dimensions]?.width ?? 117;
+    const height = dimensions[whereUse as keyof typeof dimensions]?.height ?? 35;
 
     if (theme === 'dark') {
         return(
@@ -14,6 +21,7 @@ export const Logo = ({whereUse}: Readonly<{whereUse: string}>) =>{
             alt='Logo'
             width={width}
             height={height}
+            quality={100}
             />
         )    
     }else{
@@ -23,6 +31,7 @@ export const Logo = ({whereUse}: Readonly<{whereUse: string}>) =>{
                 alt='Logo'
                 width={width}
                 height={height}
+                quality={100}
             />
         )
     }
