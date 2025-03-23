@@ -9,7 +9,7 @@ import { ToggleMenu } from './ToggleMenu';
 export const Navbar = () =>{
     const pathname = usePathname();
 
-    if (pathname === "/login") return null;
+    if (pathname === "/login" || pathname === "/register" ) return null;
 
     return(
         <nav className={styles.Navbar}>

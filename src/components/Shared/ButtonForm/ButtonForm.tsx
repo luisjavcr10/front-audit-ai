@@ -1,10 +1,10 @@
-import styles from './ButtonLogIn.module.scss';
+import styles from './ButtonForm.module.scss';
 import { ReactNode } from 'react';
 
-export const ButtonLogIn = ({children, text, type}: Readonly<{children?:ReactNode; text: string; type:string}>) => {
+export const ButtonForm = ({children, text, type}: Readonly<{children?:ReactNode; text: string; type:string}>) => {
     return(
         <button 
-            className={styles.ButtonLogIn} 
+            className={styles.ButtonForm} 
             type={`${type === 'local' ? 'submit' : 'button'}`}  
             style={type === 'local' ? {marginTop:'20px'} : {}}
         >

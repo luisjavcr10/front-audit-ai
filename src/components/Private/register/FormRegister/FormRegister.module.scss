@@ -1,4 +1,4 @@
-.FormLogIn{
+.FormRegister{
     width: 350px;
     display: flex;
     flex-direction: column;
@@ -6,15 +6,10 @@
     justify-content: center;
     gap: 15px;
 
-    &__ButtonLogin{
-        margin-top: 20px;
-    }
-
-    &__ForgotPassword{
+    &__PasswordDoenstMatch{
         width: 100%;
         font-size: 12px;
         text-align: left;
         cursor: pointer;
     }  
-
 }

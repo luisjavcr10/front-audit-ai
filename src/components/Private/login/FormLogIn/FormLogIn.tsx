@@ -1,6 +1,10 @@
 "use client"
 import styles from './FormLogIn.module.scss';
-import { ButtonLogIn } from '../ButtonLogIn';
+
+import { ButtonForm } from '@/components/Shared/ButtonForm';
+import { InputForm } from '@/components/Shared/InputForm';
+
+import { emailForm, passwordForm } from '@/constants/formData';
 
 export const FormLogIn = () =>{
     const handleLogIn = () =>{
@@ -9,16 +13,11 @@ export const FormLogIn = () =>{
 
     return(
         <form onSubmit={handleLogIn} className={styles.FormLogIn}>
-            <div className={styles.FormLogIn__ItemForm}>
-                <label>Email</label>
-                <input type="email" name="email" id="email" />
-            </div>
-            <div className={styles.FormLogIn__ItemForm}>
-                <label>Password</label>
-                <input type="password" name="password" id="password" />
+            <InputForm type={emailForm}/>
+            <InputForm type={passwordForm}>
                 <p className={styles.FormLogIn__ForgotPassword}>Forgot your password?</p>
-            </div>
-            <ButtonLogIn type='local' text='Login'/>
+            </InputForm>
+            <ButtonForm type='local' text='Login'/>
         </form>
     )
 }
