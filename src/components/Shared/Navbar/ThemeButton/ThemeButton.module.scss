@@ -2,16 +2,17 @@
     background-color: transparent;
     border: none;
     transition-duration: 500ms;
+    color: var(--color-blue-level-2);
 
     &:hover{
         scale: 1.1;
         transition-duration: 1s;
+        color: var(--color-blue-level-3);
     }
 
     &__Icon{
         width: 24px;
-        height: 24px;
-        color: var(--color-blue-level-2);
+        height: 24px; 
     }
 
     

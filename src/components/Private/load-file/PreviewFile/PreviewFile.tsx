@@ -1,12 +1,13 @@
 "use client"
 import styles from './PreviewFile.module.scss';
-import Link from 'next/link';
 import { useState, ChangeEvent, useEffect } from 'react';
 import { UploadFileInput } from '../UploadFileInput';
 import { Datatable } from '../DataTable';
 import { loadGoogleIdentityServices, authenticateGoogle, loadGooglePickerAPI, showGooglePicker, downloadFileFromDrive } from '../../../../services/googleDriveService';
 import { WindowWithGoogleAPIs } from '../../../../types/google-api';
 import { uploadFileToBackend } from '../../../../services/apiService';
+import { ModelIcon } from '@/utils/ModelIcon';
+import { TypeIcon } from '@/utils/TypeIcon';
 
 interface CSVRow {
     [key: string]: string | number | boolean | null;
@@ -118,21 +119,38 @@ export const PreviewFile = () =>{
     return(
         <>
             <UploadFileInput onChangeLocal={handleUpload} googleDrive={handleGoogleDriveClick}/>
-
-            {parsedData.length > 0 && (
-                <div className={styles.PreviewContainer}>
-                    <Datatable data={parsedData}/>    
-                    <Link 
-                        href='/prompt'
-                        onClick={() => {
-                            localStorage.setItem('parsedData', JSON.stringify(parsedData));
-                        }}
-                    >
-                        Enviar datos a análisis
-                    </Link>                
-                </div>
-                
-            )}
+            
+            <div className={styles.PreviewContainer}>
+                <Datatable data={parsedData}/>    
+                {/** Link para analizarlos
+                 * <Link 
+                    href='/prompt'
+                    onClick={() => {
+                        localStorage.setItem('parsedData', JSON.stringify(parsedData));
+                    }}
+                >
+                    Enviar datos a análisis
+                </Link>  */}  
+                <div className={styles.PreviewContainer__ButtonsSection}>
+                    <div className={styles.PreviewContainer__ButtonsSection__FeatureButtons}>
+                        <div 
+                            className={styles.PreviewContainer__FeatureButton}
+                        >
+                            <ModelIcon/>
+                            Model
+                        </div>
+                        <div 
+                            className={styles.PreviewContainer__FeatureButton}
+                        >
+                            <TypeIcon/>
+                            Type
+                        </div>
+                    </div>
+                    <div className={styles.PreviewContainer__StartButton}>
+                        Audit with AI
+                    </div>
+                </div>            
+            </div>            
         </>
     )
 }
