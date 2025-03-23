@@ -1,14 +1,50 @@
 .PreviewContainer{
+    background-color: var(--background-table);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    gap: 20px;
-    padding: 20px;
-    &__Subtitle{
-        color:#FFF0D1;
-        font-size: 20px;
-        font-weight: 500;
+    width: 90%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 4px 0px var(--shadow);
+    gap: 10px;
+
+    &__ButtonsSection{
+        width: 100%;
+        padding: 10px 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        align-items:center;
+
+        &__FeatureButtons{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+    }
+
+    &__FeatureButton{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 400;
+        border-radius: 16px;
+        box-shadow: 0 0 4px 0 var(--shadow);
+        color: var(--text);
+    }
+
+    &__StartButton{
+        padding: 10px 30px;
+        font-size: 12px;
+        font-weight: 400;
+        border-radius: 16px;
+        box-shadow: 0 0 4px 0 var(--shadow);
     }
 } 
+
+

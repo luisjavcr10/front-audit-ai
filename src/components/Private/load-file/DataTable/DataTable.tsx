@@ -3,10 +3,16 @@ import styles from './DataTable.module.scss';
 interface CSVRow {
     [key: string]: string | number | boolean | null;
 }
-  
 
-export const Datatable = ({data}: Readonly<{data: CSVRow[]}>) =>{
-    return(
+export const Datatable = ({data}: Readonly<{data: CSVRow[]}>) => {
+    if (data.length === 0) {
+        return(
+            <div className={styles.TableContainer}>
+            </div>
+        );
+    }
+
+    return (
         <div className={styles.TableContainer}>
             <table>
                 <thead>
@@ -27,5 +33,5 @@ export const Datatable = ({data}: Readonly<{data: CSVRow[]}>) =>{
                 </tbody>
             </table>
         </div>
-    )
+    );
 }

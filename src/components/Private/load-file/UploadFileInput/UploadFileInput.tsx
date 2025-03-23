@@ -8,7 +8,7 @@ export const UploadFileInput = ({ onChangeLocal, googleDrive }: Readonly<{ onCha
                 <input type="file" id="file-upload" accept=".csv" onChange={onChangeLocal} />
 
                 <label htmlFor="file-upload" className={styles["custom-file-upload"]}>
-                    Select files (CSV, Excel, PDF)
+                    Select files (CSV, Excel, Numbers)
                 </label>
 
                 <button aria-label="api-google-drive" onClick={googleDrive} className={styles.UploadFileInput__ButtonsSection__DriveButton}>
