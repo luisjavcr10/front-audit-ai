@@ -7,7 +7,7 @@ import styles from '../Navbar.module.scss';
 const links = [
   { path: '/', label: 'Home' },
   { path: '/load-file', label: 'LoadFile' },
-  { path: '/prompt', label: 'Prompt' }
+  { path: '/dashboard', label: 'Dashboard' }
 ];
 
 export const Links = () => {

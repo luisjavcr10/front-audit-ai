@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 
 export const Logo = ({whereUse}: Readonly<{whereUse: string}>) =>{
@@ -16,23 +17,27 @@ export const Logo = ({whereUse}: Readonly<{whereUse: string}>) =>{
 
     if (theme === 'dark') {
         return(
-            <Image 
-            src='/images/logo-dark.png'
-            alt='Logo'
-            width={width}
-            height={height}
-            quality={100}
-            />
+            <Link href='/'>
+                <Image
+                src='/images/logo-dark.png'
+                alt='Logo'
+                width={width}
+                height={height}
+                quality={100}
+                />
+            </Link>
         )    
     }else{
         return(
-            <Image 
+            <Link href='/'>
+                <Image
                 src='/images/logo-light.png'
                 alt='Logo'
                 width={width}
                 height={height}
                 quality={100}
-            />
+                />
+            </Link>
         )
     }
 }
