@@ -4,8 +4,12 @@ import { loadGoogleIdentityServices, authenticateGoogle, loadGooglePickerAPI, sh
 import { WindowWithGoogleAPIs } from '@/types/google-api';
 import { uploadFileFromGoogleDriveToBackend } from '@/services/apiService';
 
+interface CSVRow {
+  [key: string]: string | number | boolean | null;
+}
+
 interface GoogleDriveIntegrationProps {
-  onFileLoaded: (data: any[]) => void;
+  onFileLoaded: (data: CSVRow[]) => void;
 }
 
 export const GoogleDriveIntegration = ({ onFileLoaded }: GoogleDriveIntegrationProps) => {
