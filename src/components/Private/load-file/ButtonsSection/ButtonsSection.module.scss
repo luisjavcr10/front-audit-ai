@@ -1,27 +1,15 @@
-.PreviewContainer{
-    background-color: var(--background-table);
+.ButtonsSection{
+    width: 100%;
+    padding: 10px 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    border-radius: 15px;
-    box-shadow: 0px 0px 4px 0px var(--shadow);
-    gap: 10px;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
 
-    &__ButtonsSection{
-        width: 100%;
-        padding: 10px 10px;
+    &__FeatureButtons{
         display: flex;
         flex-direction: row;
-        justify-content:space-between;
-        align-items:center;
-
-        &__FeatureButtons{
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-        }
+        gap: 10px;
     }
 
     &__FeatureButton{
@@ -36,6 +24,7 @@
         border-radius: 16px;
         box-shadow: 0 0 4px 0 var(--shadow);
         color: var(--text);
+        cursor: pointer;
     }
 
     &__StartButton{
@@ -44,7 +33,6 @@
         font-weight: 400;
         border-radius: 16px;
         box-shadow: 0 0 4px 0 var(--shadow);
+        cursor: pointer;
     }
-} 
-
-
+}

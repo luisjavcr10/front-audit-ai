@@ -1,4 +1,4 @@
-import styles from './Presentation.module.scss';
+import styles from './Hero.module.scss';
 
 const enunciados = {
     title:'Optimize your audit with AI',
@@ -7,18 +7,18 @@ const enunciados = {
     href:'/load-file'
 }
 
-export const Presentation = () => {
+export const Hero = () => {
     return(
-        <div className={styles.Presentation}>
-            <h1 className={styles.Presentation__MainTitle}>
+        <div className={styles.Hero}>
+            <h1 className={styles.Hero__MainTitle}>
             {enunciados.title}
             </h1>
-            <p className={styles.Presentation__Description}>
+            <p className={styles.Hero__Description}>
             {enunciados.description}
             </p>
             <a 
             href={enunciados.href}
-            className={styles.Presentation__Button}
+            className={styles.Hero__Button}
             >
             {enunciados.textButton}
             </a> 

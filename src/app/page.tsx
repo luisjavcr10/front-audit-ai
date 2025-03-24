@@ -1,5 +1,5 @@
 import styles from './page.module.scss';
-import { Presentation } from '@/components/Private/home/Presentation';
+import { Hero } from '@/components/Private/home/Hero';
 import { FeatureCard } from '@/components/Private/home/FeatureCard';
 
 const infoCards=[
@@ -11,7 +11,7 @@ const infoCards=[
 export default function Home() {
   return (
     <main className={styles.page}>
-      <Presentation/>  
+      <Hero />  
 
       <div className={styles.page__Grid}>
         {infoCards.map((card, index)=>(

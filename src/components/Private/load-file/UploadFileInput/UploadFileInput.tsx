@@ -15,8 +15,6 @@ export const UploadFileInput = ({ onChangeLocal, googleDrive }: Readonly<{ onCha
                     <FaGoogleDrive className={styles.UploadFileInput__ButtonsSection__DriveButton__Icon}/>
                 </button>
             </div>
-            <p>or drag and drop here</p>
-            
         </div>
     );
 };
