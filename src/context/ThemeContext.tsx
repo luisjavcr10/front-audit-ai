@@ -15,13 +15,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme | undefined>(undefined);
 
   useEffect(() => {
-    // 1️⃣ Intentamos obtener la preferencia guardada del usuario
     const savedTheme = localStorage.getItem("theme") as Theme | null;
 
-    // 2️⃣ Si no hay preferencia guardada, usamos el tema del sistema
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
-    const initialTheme = savedTheme ?? systemTheme; // Usa guardado o sistema
+    const initialTheme = savedTheme ?? systemTheme;
     setTheme(initialTheme);
     document.documentElement.setAttribute("data-theme", initialTheme);
   }, []);
@@ -37,7 +35,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
-  if (theme === undefined) return null; // Evita errores en la carga inicial
+  if (theme === undefined) return null;
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
