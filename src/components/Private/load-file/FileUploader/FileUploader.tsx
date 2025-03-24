@@ -1,22 +1,28 @@
 "use client"
-import styles from './FileUploader.module.scss';
-import { useState, ChangeEvent } from 'react';
-import { UploadFileInput } from '../UploadFileInput';
-import { Datatable } from '../DataTable';
+import { ChangeEvent, useState } from 'react';
 import { uploadFileFromLocalToBackend } from '@/services/apiService';
-import { ModelIcon } from '@/utils/ModelIcon';
-import { TypeIcon } from '@/utils/TypeIcon';
-
-import { FeatureButton } from '../FeatureButton';
-
+import { ButtonsSection } from '../ButtonsSection';
+import { Datatable } from '../DataTable';
 import { GoogleDriveIntegration } from '../GoogleDriveIntegration/GoogleDriveIntegration';
+import { UploadFileInput } from '../UploadFileInput';
+import styles from './FileUploader.module.scss';
 
 interface CSVRow {
     [key: string]: string | number | boolean | null;
 };
   
 export const FileUploader = () =>{
-    const [parsedData, setParsedData] = useState<CSVRow[]>([]);
+    const [parsedData, setParsedData] = useState<CSVRow[] | null>(null);
+    const [selectedModel, setSelectedModel] = useState<string | null>(null);
+    const [selectedType, setSelectedType] = useState<string | null>(null);
+
+    const handleModelSelect = (model: string) => {
+        setSelectedModel(model);
+    };
+
+    const handleTypeSelect = (type: string) => {
+        setSelectedType(type);
+    }
 
     const handleUploadLocalFile = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -36,29 +42,31 @@ export const FileUploader = () =>{
 
     const { handleUploadGoogleDriveFile } = GoogleDriveIntegration({
         onFileLoaded: (data) => {
-          console.log("Datos recibidos desde el backend:", data);
+          setParsedData(data);
         },
     });
+
+    const sendRequest = () => {
+        if (!parsedData || !selectedModel || !selectedType) {
+            alert("Por favor, completa todos los campos antes de enviar la solicitud.");
+            return;
+        }
+        alert("Solicitud enviada con éxito.");
+    }
 
     return(
         <>
             <UploadFileInput onChangeLocal={handleUploadLocalFile} googleDrive={handleUploadGoogleDriveFile}/>
             
             <div className={styles.FileUploader}>
-                <Datatable data={parsedData}/>     
-                <div className={styles.FileUploader__ButtonsSection}>
-                    <div className={styles.FileUploader__ButtonsSection__FeatureButtons}>
-                        <FeatureButton type='Model'> 
-                            <ModelIcon/>
-                        </FeatureButton>    
-                        <FeatureButton type='Type'> 
-                            <TypeIcon/>
-                        </FeatureButton> 
-                    </div>
-                    <div className={styles.FileUploader__StartButton}>
-                        Audit with AI
-                    </div>
-                </div>            
+                <Datatable data={parsedData}/>  
+                <ButtonsSection 
+                    model={selectedModel}
+                    type={selectedType}
+                    handleModel={handleModelSelect} 
+                    handleType={handleTypeSelect}
+                    handleSendRequest={sendRequest}
+                />        
             </div>            
         </>
     )

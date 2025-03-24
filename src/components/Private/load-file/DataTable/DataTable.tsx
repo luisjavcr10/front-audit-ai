@@ -4,8 +4,8 @@ interface CSVRow {
     [key: string]: string | number | boolean | null;
 }
 
-export const Datatable = ({data}: Readonly<{data: CSVRow[]}>) => {
-    if (data.length === 0) {
+export const Datatable = ({data}: Readonly<{data: CSVRow[] | null}>) => {
+    if (data === null) {
         return(
             <div className={styles.TableContainer}>
             </div>

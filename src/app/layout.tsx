@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${beVietmanPro.className}`}>
+      <body className={beVietmanPro.className}>
         <ThemeProvider>
           {/** Navbar */}
           <Navbar/>

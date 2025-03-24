@@ -1,39 +1,47 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './FeatureButton.module.scss';
 
-export const FeatureButton = ({children, type}: Readonly<{children: React.ReactNode; type: string}>) => {
+export const FeatureButton = ({
+    children, 
+    typeSelect, 
+    dataList,
+    selected,
+    handleSelect,
+}: Readonly<{
+    children: React.ReactNode; 
+    typeSelect: string; 
+    dataList: string[];
+    selected:string | null;
+    handleSelect: (model: string)=> void;
+}>) => {
     const [showMenu, setShowMenu] = useState(false);
-    const [selectedModel, setSelectedModel] = useState('Model');
+    const menuRef = useRef(null);
+
+    useEffect(() => {
+      function handleClickOutside(event: MouseEvent): void {
+        if (menuRef.current && !(menuRef.current as HTMLElement).contains(event.target as Node)) {
+            setShowMenu(false);
+        }
+      }
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
     
-    const aiModels = [
-        'GPT-4',
-        'GPT-3.5',
-        'Claude 3 Opus',
-        'Claude 3 Sonnet',
-        'Gemini Pro',
-        'Llama 3',
-        'Mistral Large',
-        'Falcon'
-    ];
     
     const toggleMenu = () => {
         setShowMenu(!showMenu);
     };
     
-    const selectModel = (model: string) => {
-        setSelectedModel(model);
-        setShowMenu(false);
-    };
-    
     return(
         <div className={styles.FeatureButtonContainer}>
             {showMenu && (
-                <div className={styles.ToggleMenu}>
-                    {aiModels.map((model) => (
+                <div ref={menuRef} className={styles.ToggleMenu}>
+                    {dataList.map((model) => (
                         <div 
                             key={model} 
                             className={styles.MenuItem}
-                            onClick={() => selectModel(model)}
+                            onClick={() => (handleSelect(model), setShowMenu(false))}
                         >
                             {model}
                         </div>
@@ -45,7 +53,7 @@ export const FeatureButton = ({children, type}: Readonly<{children: React.ReactN
                 onClick={toggleMenu}
             >
                 {children}
-                {selectedModel}
+                {selected===null? typeSelect: selected}
             </div>
         </div>
     );
