@@ -1,8 +1,8 @@
 import styles from './page.module.scss';
-import { PreviewFile } from '@/components/Private/load-file/PreviewFile';
+import { FileUploader } from '@/components/Private/load-file/FileUploader';
 
 const title = "AuditAI - Smart Auditing with AI";
-const subtitle = "Upload your files (CSV, Excel, PDF) and let AI audit them for you. Fast and accurate!";
+const subtitle = "Upload your files (CSV, Excel, Numbers) and let AI audit them for you. Fast and accurate!";
 
 export default function LoadFile() {
 
@@ -10,7 +10,7 @@ export default function LoadFile() {
         <main className={styles.page}>
             <h1>{title}</h1>
             <p>{subtitle}</p>
-            <PreviewFile/>
+            <FileUploader/>
         </main>
     );
 }
