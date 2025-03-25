@@ -20,6 +20,14 @@ export default function Register() {
                 <p className={styles.page__Separator}>{infoRegister.separator}</p>
             </div>
 
+            <div className={styles.page__HiddenContainer}>
+                <Logo whereUse={"login"}/>
+                <ButtonForm type={infoRegister.button.type} text={infoRegister.button.text}> 
+                    {infoRegister.button.icon}
+                </ButtonForm>
+                <p className={styles.page__Separator}>{infoRegister.separator}</p>
+            </div>
+
             <div className={styles.page__RightContainer}>
                 <FormRegister/>
                 <p className={styles.page__HaveAccount}>

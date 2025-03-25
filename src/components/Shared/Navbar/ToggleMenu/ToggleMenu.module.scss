@@ -1,0 +1,65 @@
+.Menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    @media (min-width: 768px) {
+        display: none;
+    }
+    
+    &__Icon {
+        width: 40px;
+        height: 40px;
+        color: var(--text);
+    }
+}
+
+.ToggleMenu {
+    position: absolute;
+    top: 80px;  
+    right: 20px;
+    width: 200px;   
+    background-color: var(--background);
+    box-shadow: 0px 0px 4px 0px #FFFFFF;
+    border-radius: 12px;
+    padding: 20px 0px;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__Item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 15px 20px;
+        color: var(--text);
+        cursor: pointer;
+        transition: background 0.2s ease;
+        
+
+        &:hover {
+            color: var(--color-blue-level-2);
+        }
+
+        &__Icon{
+            width: 24px;
+            height: 24px;
+        }
+
+        &__Title{
+            font-size: 15px;
+            font-weight: 400;
+        }
+    }
+}
