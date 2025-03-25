@@ -34,16 +34,19 @@
         padding: 20px 40px;
         border-radius: 10px;
         transition-duration: 500ms;
-        transition-property: scale, background-color;
+        transition-property: background-color;
         color: #FFFFFF;
         @media screen and (min-width: 768px)  {
             width: auto;
+            transition-property:scale, background-color;
         }
         &:hover{
-            scale:1.1;
             background-color: var(--color-blue-level-3);
             box-shadow: 0 0 5px 2px var(--color-blue-level-2);
             transition-duration: 2s;
+            @media screen and (min-width: 768px)  {
+                scale:1.1;
+            }
         }
     }
 

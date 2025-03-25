@@ -9,6 +9,7 @@
   --color-blue-level-2: #{$color-blue-level-2};
   --color-blue-level-3: #{$color-blue-level-3};
   --shadow: #00000040;
+  --shadow-footer-header: #00000040;
 }
 
 /* 🌙 Soporte automático para el modo oscuro del sistema */
@@ -19,6 +20,7 @@
     --background-table: #{$color-rat};
     --text: #{$color-white};
     --shadow: #FFFFFF40;
+    --shadow-footer-header: #00000040;
   }
 }
 
@@ -28,6 +30,8 @@
   --background-navbar: #{$color-black};
   --background-table: #{$color-rat};
   --text: #{$color-white};
+  --shadow: #FFFFFF40;
+  --shadow-footer-header: #00000040;
 }
 
 :root[data-theme="light"] {
@@ -35,6 +39,8 @@
   --background-navbar: #{$color-white};
   --background-table: #{$color-white};
   --text: #{$color-black};
+  --shadow: #00000040;
+  --shadow-footer-header: #00000040;
 }
 
 // Essential HTML and body styles
