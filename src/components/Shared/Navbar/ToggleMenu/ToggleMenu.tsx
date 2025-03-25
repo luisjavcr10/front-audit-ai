@@ -1,7 +1,7 @@
 "use client";
-import styles from '../Navbar.module.scss';
+import styles from './ToggleMenu.module.scss'
 import { ItemToggleMenu } from './ItemToggleMenu';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { IoMenu } from "react-icons/io5";
 import { GoHomeFill } from "react-icons/go";
@@ -21,6 +21,18 @@ const itemsToAnyPage=[
 
 export const ToggleMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const menuRef = useRef(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent): void {
+          if (menuRef.current && !(menuRef.current as HTMLElement).contains(event.target as Node)) {
+            setIsOpen(false);
+          }
+        }
+  
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+      }, []);
 
     const handleToggleMenu = () => {
         setIsOpen(!isOpen);
@@ -29,13 +41,13 @@ export const ToggleMenu = () => {
     return (
         <>
             <div 
-                className={styles.Navbar__Menu}
+                className={styles.Menu}
                 onClick={handleToggleMenu}
             >
-                <IoMenu className={styles.Navbar__Menu__Icon}/>
+                <IoMenu className={styles.Menu__Icon}/>
             </div>
             {/* Toggle Menu */}
-            <div className={`${styles.ToggleMenu} ${
+            <div ref={menuRef} className={`${styles.ToggleMenu} ${
               isOpen ? styles.active : ''
             }`}>
                 {itemsToAnyPage.map((item, index) => (
@@ -46,7 +58,6 @@ export const ToggleMenu = () => {
                         href={item.href}
                     />
                 ))}
-
             </div>
         </>
         

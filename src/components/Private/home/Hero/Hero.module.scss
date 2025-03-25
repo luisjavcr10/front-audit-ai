@@ -1,11 +1,14 @@
 .Hero{
-    max-width: 80%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     gap: 40px;
     padding: 40px 20px;
+    @media screen and (min-width: 768px)  {
+        max-width: 80%;
+    }
 
     &__MainTitle{
         font-size: 40px;
@@ -14,25 +17,36 @@
     }
 
     &__Description{
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 400;
         text-align: center;
+        @media screen and (min-width: 768px)  {
+            font-size: 24px;
+        }
     }
 
     &__Button{
+        width: 100%;
+        text-align: center;
         background-color: var(--color-blue-level-2);
         font-size: 24px;
         font-weight: 400;
         padding: 20px 40px;
         border-radius: 10px;
         transition-duration: 500ms;
-        transition-property: scale, background-color;
+        transition-property: background-color;
         color: #FFFFFF;
+        @media screen and (min-width: 768px)  {
+            width: auto;
+            transition-property:scale, background-color;
+        }
         &:hover{
-            scale:1.1;
             background-color: var(--color-blue-level-3);
             box-shadow: 0 0 5px 2px var(--color-blue-level-2);
             transition-duration: 2s;
+            @media screen and (min-width: 768px)  {
+                scale:1.1;
+            }
         }
     }
 

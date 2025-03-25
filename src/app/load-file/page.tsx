@@ -8,8 +8,8 @@ export default function LoadFile() {
 
     return (
         <main className={styles.page}>
-            <h1>{title}</h1>
-            <p>{subtitle}</p>
+            <h1 className={styles.page__Title}>{title}</h1>
+            <p className={styles.page__Subtitle}>{subtitle}</p>
             <FileUploader/>
         </main>
     );

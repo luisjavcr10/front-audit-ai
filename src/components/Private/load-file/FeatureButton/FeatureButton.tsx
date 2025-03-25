@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './FeatureButton.module.scss';
+import { FaCheck } from "react-icons/fa";
 
 export const FeatureButton = ({
     children, 
@@ -40,10 +41,11 @@ export const FeatureButton = ({
                     {dataList.map((model) => (
                         <div 
                             key={model} 
-                            className={styles.MenuItem}
+                            className={`${styles.MenuItem} ${selected===model? styles.active : ''}`}
                             onClick={() => (handleSelect(model), setShowMenu(false))}
                         >
                             {model}
+                            {selected===model?<FaCheck/>:null}
                         </div>
                     ))}
                 </div>

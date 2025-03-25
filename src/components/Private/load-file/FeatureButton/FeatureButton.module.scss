@@ -19,7 +19,7 @@
     transition: background-color 0.2s ease;
     
     &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+        opacity: 0.6;
     }
 }
 
@@ -27,7 +27,7 @@
     position: absolute;
     bottom: 100%;
     left: 0;
-    width: 180px;
+    width: 200px;
     background-color: var(--background);
     border-radius: 8px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -38,13 +38,18 @@
 }
 
 .MenuItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 15px;
     font-size: 12px;
     cursor: pointer;
     transition: background-color 0.2s ease;
     
     &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+        color: var(--color-blue-level-3);
+        font-weight: 500;
     }
     
     &:first-child {
@@ -54,4 +59,10 @@
     &:last-child {
         border-radius: 0 0 8px 8px;
     }
+
+    &.active {
+        color: var(--color-blue-level-3);
+        font-weight: 500;
+    }
+
 }
