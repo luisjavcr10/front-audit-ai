@@ -10,9 +10,13 @@ interface CSVRow {
 
 interface GoogleDriveIntegrationProps {
   onFileLoaded: (data: CSVRow[]) => void;
+  handleLoading: (value: boolean) => void;
 }
 
-export const GoogleDriveIntegration = ({ onFileLoaded }: GoogleDriveIntegrationProps) => {
+export const GoogleDriveIntegration = ({ 
+  onFileLoaded, 
+  handleLoading 
+}: GoogleDriveIntegrationProps) => {
   const [gisLoaded, setGisLoaded] = useState(false);
   const [accessToken, setAccessToken] = useState<string | null>(null);
 
@@ -47,9 +51,12 @@ export const GoogleDriveIntegration = ({ onFileLoaded }: GoogleDriveIntegrationP
         try {
           const fileBlob = await downloadFileFromDrive(file.id, token);
           console.log("Archivo descargado:", fileBlob);
+          handleLoading(true);
           const jsonData = await uploadFileFromGoogleDriveToBackend(fileBlob, file.name);
+          handleLoading(false);
           onFileLoaded(jsonData);
         } catch (error) {
+          handleLoading(false);
           console.error("Error al manejar el archivo:", error);
           alert("Hubo un problema al manejar el archivo.");
         }
