@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './Hero.module.scss';
 
 const enunciados = {
@@ -16,12 +17,12 @@ export const Hero = () => {
             <p className={styles.Hero__Description}>
             {enunciados.description}
             </p>
-            <a 
+            <Link
             href={enunciados.href}
             className={styles.Hero__Button}
             >
             {enunciados.textButton}
-            </a> 
+            </Link> 
       </div>  
     );
 }
