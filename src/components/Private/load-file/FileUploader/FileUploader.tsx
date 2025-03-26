@@ -5,6 +5,7 @@ import { ButtonsSection } from '../ButtonsSection';
 import { Datatable } from '../DataTable';
 import { GoogleDriveIntegration } from '../GoogleDriveIntegration/GoogleDriveIntegration';
 import { UploadFileInput } from '../UploadFileInput';
+import { ErrorToast } from '@/components/Shared/ErrorToast';
 import styles from './FileUploader.module.scss';
 
 interface CSVRow {
@@ -15,6 +16,8 @@ export const FileUploader = () =>{
     const [parsedData, setParsedData] = useState<CSVRow[] | null>(null);
     const [selectedModel, setSelectedModel] = useState<string | null>(null);
     const [selectedType, setSelectedType] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
+
 
     const handleModelSelect = (model: string) => {
         setSelectedModel(model);
@@ -46,9 +49,21 @@ export const FileUploader = () =>{
         },
     });
 
+    const handleError = (error: string) => {
+        setError(error);
+    }
+
     const sendRequest = () => {
-        if (!parsedData || !selectedModel || !selectedType) {
-            alert("Por favor, completa todos los campos antes de enviar la solicitud.");
+        const validationErrors = {
+            file: !parsedData && 'Select a file',
+            model: !selectedModel && 'Select an AI model', 
+            type: !selectedType && 'Select an audit type'
+        };
+
+        const error = Object.values(validationErrors).find(Boolean);
+        
+        if (error) {
+            handleError(error);
             return;
         }
         alert("Solicitud enviada con éxito.");
@@ -67,7 +82,9 @@ export const FileUploader = () =>{
                     handleType={handleTypeSelect}
                     handleSendRequest={sendRequest}
                 />        
-            </div>            
+            </div> 
+
+            {error && <ErrorToast errorMessage={error} onClose={()=>setError(null)}/>  }
         </>
     )
 }
