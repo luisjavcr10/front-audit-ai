@@ -4,7 +4,7 @@ import styles from './ErrorToast.module.scss';
 export const ErrorToast = ({
   errorMessage,
   onClose,
-}: Readonly<{ errorMessage: string; onClose: () => void }>) => {
+}: Readonly<{ errorMessage: string | null; onClose: () => void }>) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
