@@ -1,0 +1,22 @@
+.ErrorToast {
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    z-index: 100;
+    background-color: #cc1818;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 0 4px 0 var(--shadow--footer-header);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
