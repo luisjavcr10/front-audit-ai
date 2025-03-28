@@ -24,7 +24,7 @@ export const ButtonsSection = ({
         <div className={styles.ButtonsSection}>
             <div className={styles.ButtonsSection__FeatureButtons}>
                 <FeatureButton 
-                    typeSelect='Model AI' 
+                    typeSelect='AI Model' 
                     dataList={aiModels}
                     selected={model}
                     handleSelect={handleModel}
@@ -32,7 +32,7 @@ export const ButtonsSection = ({
                     <ModelIcon/>
                 </FeatureButton>    
                 <FeatureButton 
-                    typeSelect='Type Audit' 
+                    typeSelect='Audit Type' 
                     dataList={typeAuditList}
                     selected={type}
                     handleSelect={handleType}
