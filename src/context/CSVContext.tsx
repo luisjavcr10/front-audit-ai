@@ -16,7 +16,6 @@ const CSVContext = createContext<CSVContextType | undefined>(undefined);
 export function CSVProvider({ children }: { children: React.ReactNode }) {
     const [CSVdata, setCSVdata] = useState<CSVRow[] | null>(null);
 
-    // Cargar datos desde localStorage cuando se monta el componente
     useEffect(() => {
         const storedData = localStorage.getItem("CSVdata");
         if (storedData) {
