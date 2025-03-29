@@ -10,17 +10,15 @@ import { GoogleDriveIntegration } from '../GoogleDriveIntegration/GoogleDriveInt
 import { UploadFileInput } from '../UploadFileInput';
 import styles from './FileUploader.module.scss';
 
-
-interface CSVRow {
-    [key: string]: string | number | boolean | null;
-};
+import { useCSVContext } from '@/context/CSVContext';
   
 export const FileUploader = () =>{
-    const [parsedData, setParsedData] = useState<CSVRow[] | null>(null);
     const [selectedModel, setSelectedModel] = useState<string | null>(null);
     const [selectedType, setSelectedType] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+
+    const {CSVdata, toggleCSV} = useCSVContext();
 
     const handleIsLoading = (value: boolean) => {
         setIsLoading(value);
@@ -45,7 +43,8 @@ export const FileUploader = () =>{
             setIsLoading(true);
             const data = await uploadFileFromLocalToBackend(file);
             setIsLoading(false);
-            setParsedData(data);
+            //setParsedData(data);
+            toggleCSV(data);
         } catch (error) {
             console.error("Error:", error);
             alert("Hubo un problema al subir el archivo.");
@@ -54,7 +53,7 @@ export const FileUploader = () =>{
 
     const { handleUploadGoogleDriveFile } = GoogleDriveIntegration({
         onFileLoaded: (data) => {
-          setParsedData(data);
+            toggleCSV(data);
         }, handleLoading: handleIsLoading
     });
 
@@ -64,7 +63,7 @@ export const FileUploader = () =>{
 
     const sendRequest = () => {
         const validationErrors = {
-            file: !parsedData && 'Select a file',
+            file: !CSVdata && 'Select a file',
             model: !selectedModel && 'Select an AI model', 
             type: !selectedType && 'Select an audit type'
         };
@@ -83,7 +82,7 @@ export const FileUploader = () =>{
             <UploadFileInput onChangeLocal={handleUploadLocalFile} googleDrive={handleUploadGoogleDriveFile}/>
             
             <div className={styles.FileUploader}>
-                <Datatable data={parsedData}/>  
+                <Datatable/>  
                 <ButtonsSection 
                     model={selectedModel}
                     type={selectedType}

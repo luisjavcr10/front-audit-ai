@@ -4,6 +4,7 @@ import "@/styles/main.scss";
 import { Footer } from "@/components/Shared/Footer";
 import { Navbar } from "@/components/Shared/Navbar";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { CSVProvider } from "@/context/CSVContext";
 
 const beVietmanPro= Be_Vietnam_Pro({
   weight:['100','200','300','400','500','600','700','800','900'],
@@ -25,13 +26,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={beVietmanPro.className}>
         <ThemeProvider>
+          <CSVProvider>
           {/** Navbar */}
           <Navbar/>
           {/** Children */}
           {children}
           {/** Footer */}
           <Footer/>
-          </ThemeProvider>
+          </CSVProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,11 +1,12 @@
+"use client"
+
 import styles from './DataTable.module.scss';
+import { useCSVContext } from '@/context/CSVContext';
 
-interface CSVRow {
-    [key: string]: string | number | boolean | null;
-}
+export const Datatable = () => {
+    const {CSVdata} = useCSVContext();
 
-export const Datatable = ({data}: Readonly<{data: CSVRow[] | null}>) => {
-    if (data === null) {
+    if (CSVdata === null) {
         return(
             <div className={styles.TableContainer}>
             </div>
@@ -17,13 +18,13 @@ export const Datatable = ({data}: Readonly<{data: CSVRow[] | null}>) => {
             <table>
                 <thead>
                     <tr>
-                        {Object.keys(data[0]).map((header) => (
+                        {Object.keys(CSVdata[0]).map((header) => (
                             <th key={header}>{header.toUpperCase()}</th>
                         ))}
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((row, index) => (
+                    {CSVdata.map((row, index) => (
                         <tr key={index}>
                             {Object.values(row).map((value, i) => (
                                 <td key={i}>{value}</td>
