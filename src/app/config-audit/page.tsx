@@ -3,20 +3,10 @@ import styles from './page.module.scss';
 import { useState } from 'react';
 import { useCSVContext } from '@/context/CSVContext';
 
-const sectorOptions = [
-    { value: 'technology', label: 'Technology' },
-    { value: 'finance', label: 'Finance' },
-    { value: 'healthcare', label: 'Healthcare' },
-    { value: 'retail', label: 'Retail' },
-    { value: 'manufacturing', label: 'Manufacturing' },
-];
-const typeauditOptions = [
-    { value: 'financial', label: 'Financial' },
-    { value: 'operational', label: 'Operational' },
-    { value: 'compliance', label: 'Compliance' },
-    { value: 'performance', label: 'Performance' },
-    { value: 'it', label: 'IT' },
-]
+import { SelectToConfigAudit } from '@/components/Private/config-audit/SelectToConfigAudit';
+import { ButtonToRequest } from '@/components/Private/config-audit/ButtonToRequest';
+
+import { sectorOptions, typeauditOptions } from '@/constants/listConfigAudit';
 
 
 export default function ConfigAudit() {
@@ -24,7 +14,7 @@ export default function ConfigAudit() {
 
     const [sector, setSector] = useState<string>('');
     const [typeaudit, setTypeaudit] = useState<string>('');
-    const [responseState, setResponse] = useState<string[]>();
+    const [regulationsList, setRegulationsList] = useState<string[]>();
 
     const handleSubmit = async () => {
         try {
@@ -39,51 +29,91 @@ export default function ConfigAudit() {
                 }),
             });
     
+
             const responseData = await response.json();
             console.log('Response data:', responseData);
-            console.log(responseData.normativas_recomendadas);
+            console.log(responseData.recommendedRules);
             console.log(CSVdata && CSVdata[0] ? Object.keys(CSVdata[0]) : []);
-            setResponse(responseData.normativas_recomendadas);
+            setRegulationsList(responseData.recommendedRules);
         } catch (error) {
             console.error('Error:', error);
         }   
         
     }
+
+    const handleRemoveRegulationsList = (regulation: string) => {
+        setRegulationsList((prev)=> prev?.filter((reg)=> reg !== regulation));
+    }
     
+    const getRulesList = async () => {
+        const request= {
+            sector: sector,
+            typeaudit: typeaudit,
+            cabeceras: CSVdata && CSVdata[0]? Object.keys(CSVdata[0]) : [],
+            normativas: regulationsList
+        }
+        console.log(request);
+
+        const response = await fetch('https://backend-audit-ai.onrender.com/getRules', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                contextAuditDto: {
+                    sector: sector,
+                    typeaudit: typeaudit,
+                    normativas: regulationsList,
+                    metadata:{
+                        headCsv: CSVdata && CSVdata[0]? Object.keys(CSVdata[0]) : [],
+                    }
+                },
+                configIADto:{
+                    detailLevel: "Alto",
+                    language: "Español",
+                }
+
+            }),
+        });
+
+        const responseData = (await response.json());
+        console.log(responseData.rules);
+    }
+
     return (
-        <div className={styles.page}>
-            <h1>Config Audit</h1>
-
-            <label>Sector</label>
-            <select onChange={(e) => setSector(e.target.value)} name="sector" id="sector">
-                <option value="">Select a sector</option>
-                {sectorOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                        {option.label}
-                    </option>
-                ))}
-            </select>
-
-            <label>Tipo de auditoria</label>
-            <select onChange={(e)=>setTypeaudit(e.target.value)} name="typeaudit" id="typeaudit">
-                <option value="">Select audit type</option>
-                {typeauditOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                        {option.label}
-                    </option>
-                ))}
-            </select>
-
-            <button onClick={handleSubmit}>
-                Submit
-            </button>
-
-            {responseState?.map((normativa, index) => (
-                <div key={index}>
-                    <p>{normativa}</p>
+        <>
+            <div className={styles.page__form}>
+                <SelectToConfigAudit
+                    options={sectorOptions}
+                    handleSelected={setSector}
+                    label="Sector"
+                    name="sector"
+                />
+                <SelectToConfigAudit
+                    options={typeauditOptions}
+                    handleSelected={setTypeaudit}
+                    label="Type Audit"
+                    name="typeaudit"
+                />  
+                <ButtonToRequest
+                    onClick={handleSubmit}
+                    message="Cargar normativas sugeridas"
+                />
+            </div>  
+             {regulationsList && regulationsList.length > 0 && (
+                <div className={styles.page__normativas}>
+                    <h2 className={styles.page__normativas__title}>Normativas Sugeridas</h2>
+                    <div className={styles.page__normativas__list}>
+                        {regulationsList.map((regulation, index) => (
+                            <div key={index} className={styles.page__normativas__list__item}>
+                                {regulation}
+                                <button onClick={() => handleRemoveRegulationsList(regulation)}>x</button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            ))}
-
-        </div>
+            )}
+            <button onClick={getRulesList}>Obtener reglas sugeridas</button>
+        </>
     )
 }
