@@ -1,0 +1,10 @@
+.DashboardContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    @media screen and (min-width: 768px)   {
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    }
+    grid-auto-rows: minmax(300px, auto);
+    gap: 20px;
+    min-height: 100vh;
+}
