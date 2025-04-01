@@ -31,7 +31,8 @@ ChartJS.register(
 // Estilos generales del dashboard
 const DashboardContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  grid-auto-rows: minmax(300px, auto);
   gap: 20px;
   padding: 20px;
   background-color: #f5f7fa;
@@ -191,72 +192,86 @@ const chartOptions = {
 const Dashboard = () => {
   return (
     <DashboardContainer>
-      <CardContainer>
-        <Card>
-          <CardTitle>Operaciones exitosas</CardTitle>
-          <CardValue>100</CardValue>
-          <CardChange positive>
-            ↑ 12% desde el mes pasado
-          </CardChange>
-        </Card>
-        
-        <Card>
-          <CardTitle>Operaciones fallidas</CardTitle>
-          <CardValue>15</CardValue>
-          <CardChange positive={false}>
-            ↓ 5% desde el mes pasado
-          </CardChange>
-        </Card>
-        
-        <Card>
-          <CardTitle>Tiempo promedio</CardTitle>
-          <CardValue>2.4s</CardValue>
-          <CardChange positive>
-            ↓ 0.8s desde la última semana
-          </CardChange>
-        </Card>
-        
-        <Card>
-          <CardTitle>Satisfacción del cliente</CardTitle>
-          <CardValue>94%</CardValue>
-          <CardChange positive>
-            ↑ 3% desde el último trimestre
-          </CardChange>
-        </Card>
-      </CardContainer>
-
       <ChartContainer>
         <SectionTitle>Comparación Mensual</SectionTitle>
-        <div style={{ height: '300px' }}>
-          <Bar data={barChartData} options={chartOptions} />
+        <div style={{display:'flex', flexDirection:'column'}}>
+          <div style={{ height: '200px' }}>
+            <Bar data={barChartData} options={chartOptions} />
+          </div>
+          <ChartDescription>
+            Este gráfico de barras muestra la comparación entre ventas y gastos durante el primer semestre del año.
+            Permite identificar meses con mejor rendimiento y relación coste-beneficio.
+          </ChartDescription>
         </div>
-        <ChartDescription>
-          Este gráfico de barras muestra la comparación entre ventas y gastos durante el primer semestre del año.
-          Permite identificar meses con mejor rendimiento y relación coste-beneficio.
-        </ChartDescription>
+        
       </ChartContainer>
 
       <ChartContainer>
         <SectionTitle>Tendencia Semanal</SectionTitle>
-        <div style={{ height: '300px' }}>
-          <Line data={lineChartData} options={chartOptions} />
+        <div style={{display:'flex', flexDirection:'row'}}>
+          <div style={{ height: '200px' }}>
+            <Line data={lineChartData} options={chartOptions} />
+          </div>
+          <ChartDescription>
+            El gráfico de líneas muestra la fluctuación de usuarios activos durante la semana.
+            Los fines de semana suelen mostrar un aumento en la actividad de los usuarios.
+          </ChartDescription>
         </div>
-        <ChartDescription>
-          El gráfico de líneas muestra la fluctuación de usuarios activos durante la semana.
-          Los fines de semana suelen mostrar un aumento en la actividad de los usuarios.
-        </ChartDescription>
       </ChartContainer>
 
       <ChartContainer>
         <SectionTitle>Análisis Trimestral</SectionTitle>
-        <div style={{ height: '300px' }}>
-          <Line data={areaChartData} options={chartOptions} />
+        <div style={{display:'flex', flexDirection:'column'}}>
+          <div style={{ height: '200px' }}>
+            <Line data={areaChartData} options={chartOptions} />
+          </div>
+          <ChartDescription>
+            Este gráfico de áreas representa los ingresos y beneficios por trimestre.
+            Las áreas sombreadas permiten visualizar fácilmente la diferencia entre ambos conceptos.
+          </ChartDescription>
         </div>
-        <ChartDescription>
-          Este gráfico de áreas representa los ingresos y beneficios por trimestre.
-          Las áreas sombreadas permiten visualizar fácilmente la diferencia entre ambos conceptos.
-        </ChartDescription>
       </ChartContainer>
+
+      <ChartContainer>
+        <SectionTitle>Comparación Mensual</SectionTitle>
+        <div style={{display:'flex', flexDirection:'column'}}>
+          <div style={{ height: '200px' }}>
+            <Bar data={barChartData} options={chartOptions} />
+          </div>
+          <ChartDescription>
+            Este gráfico de barras muestra la comparación entre ventas y gastos durante el primer semestre del año.
+            Permite identificar meses con mejor rendimiento y relación coste-beneficio.
+          </ChartDescription>
+        </div>
+        
+      </ChartContainer>
+
+      <ChartContainer>
+        <SectionTitle>Tendencia Semanal</SectionTitle>
+        <div style={{display:'flex', flexDirection:'column'}}>
+          <div style={{ height: '200px' }}>
+            <Line data={lineChartData} options={chartOptions} />
+          </div>
+          <ChartDescription>
+            El gráfico de líneas muestra la fluctuación de usuarios activos durante la semana.
+            Los fines de semana suelen mostrar un aumento en la actividad de los usuarios.
+          </ChartDescription>
+        </div>
+      </ChartContainer>
+
+      <ChartContainer>
+        <SectionTitle>Análisis Trimestral</SectionTitle>
+        <div style={{display:'flex', flexDirection:'column'}}>
+          <div style={{ height: '200px' }}>
+            <Line data={areaChartData} options={chartOptions} />
+          </div>
+          <ChartDescription>
+            Este gráfico de áreas representa los ingresos y beneficios por trimestre.
+            Las áreas sombreadas permiten visualizar fácilmente la diferencia entre ambos conceptos.
+          </ChartDescription>
+        </div>
+      </ChartContainer>
+      
     </DashboardContainer>
   );
 };

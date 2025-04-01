@@ -117,3 +117,5 @@ export default function ConfigAudit() {
         </>
     )
 }
+
+//Hacer la vista con 3 partes, las cuales podran ser desplegables.
