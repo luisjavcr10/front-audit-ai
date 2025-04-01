@@ -2,21 +2,23 @@
  * Servicio para manejar las llamadas al backend
  */
 
-// URL base del backend
-const API_BASE_URL = "https://backend-audit-ai.onrender.com";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 
-// Define an interface for the row data
 interface CSVRow {
   [key: string]: string | number | boolean | null;
 }
 
-/**
- * Sube un archivo al backend y lo convierte a JSON
- * @param fileBlob Blob del archivo a subir
- * @param fileName Nombre del archivo
- * @param fileType Tipo de archivo (por defecto 'csv')
- * @returns Promise con los datos convertidos a JSON
- */
+interface BodyToGetRegulations{
+  sector: string;
+  typeaudit:string;
+}
+
+interface BodyToGetListOfRules{
+  sector: string;
+  typeaudit:string;
+  cabeceras: string[];
+  normativas: string[];
+}
 
 export const uploadFileFromGoogleDriveToBackend = async (
   fileBlob: Blob, 
@@ -76,5 +78,58 @@ export const uploadFileFromLocalToBackend = async (
   } catch (error) {
     console.error("Error:", error);
     throw error;
+  }
+};
+
+export const getListOfRegulations = async (
+  body: BodyToGetRegulations
+): Promise<string[]> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/recommendations`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await response.json();
+    return data.recommendedRules;  
+  } catch (error) {
+    console.error('Error:', error);
+    return [];  
+  }
+};
+
+export const getListOfRules = async (
+  body: BodyToGetListOfRules
+): Promise<string[]> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/getRules`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        contextAuditDto: {
+          sector: body.sector,
+          typeaudit: body.typeaudit,
+          normativas: body.normativas,
+          metadata:{
+              headCsv: body.cabeceras,
+          }
+        },
+        configIADto:{
+          detailLevel: "Alto",
+          language: "Español",
+        }          
+      }),
+    });
+
+    const data = await response.json();
+    return data.rules;  
+  } catch (error) {
+    console.error('Error:', error);
+    return [];  
   }
 };
