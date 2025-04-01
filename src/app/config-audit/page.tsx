@@ -8,36 +8,46 @@ import { ButtonToRequest } from '@/components/Private/config-audit/ButtonToReque
 
 import { sectorOptions, typeauditOptions } from '@/constants/listConfigAudit';
 
+//Services
+import { getListOfRegulations, getListOfRules } from '@/services/apiService';
+
 
 export default function ConfigAudit() {
     const {CSVdata} = useCSVContext();
 
     const [sector, setSector] = useState<string>('');
     const [typeaudit, setTypeaudit] = useState<string>('');
-    const [regulationsList, setRegulationsList] = useState<string[]>();
+    const [regulationsList, setRegulationsList] = useState<string[]>([]);
+    const [rulesList, setRulesList] = useState<string[]>([]);
 
-    const handleSubmit = async () => {
+    const getRegulationsList = async () => {
         try {
-            const response = await fetch('https://backend-audit-ai.onrender.com/recommendations', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    sector: sector,
-                    typeaudit: typeaudit,
-                }),
-            });
-    
-
-            const responseData = await response.json();
-            console.log('Response data:', responseData);
-            console.log(responseData.recommendedRules);
-            console.log(CSVdata && CSVdata[0] ? Object.keys(CSVdata[0]) : []);
-            setRegulationsList(responseData.recommendedRules);
+            const body= {
+                sector: sector,
+                typeaudit: typeaudit,
+            }
+            const recommendedRules = await getListOfRegulations(body);
+            setRegulationsList(recommendedRules);
         } catch (error) {
             console.error('Error:', error);
         }   
+        
+    }
+
+    const getRulesList = async () => {
+        try {
+            const request= {
+            sector: sector,
+            typeaudit: typeaudit,
+            cabeceras: CSVdata && CSVdata[0]? Object.keys(CSVdata[0]) : [],
+            normativas: regulationsList
+            }
+
+            const rules = await getListOfRules(request);
+            setRulesList(rules);
+        } catch (error) {
+            console.error('Error:', error);
+        }
         
     }
 
@@ -45,41 +55,6 @@ export default function ConfigAudit() {
         setRegulationsList((prev)=> prev?.filter((reg)=> reg !== regulation));
     }
     
-    const getRulesList = async () => {
-        const request= {
-            sector: sector,
-            typeaudit: typeaudit,
-            cabeceras: CSVdata && CSVdata[0]? Object.keys(CSVdata[0]) : [],
-            normativas: regulationsList
-        }
-        console.log(request);
-
-        const response = await fetch('https://backend-audit-ai.onrender.com/getRules', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                contextAuditDto: {
-                    sector: sector,
-                    typeaudit: typeaudit,
-                    normativas: regulationsList,
-                    metadata:{
-                        headCsv: CSVdata && CSVdata[0]? Object.keys(CSVdata[0]) : [],
-                    }
-                },
-                configIADto:{
-                    detailLevel: "Alto",
-                    language: "Español",
-                }
-
-            }),
-        });
-
-        const responseData = (await response.json());
-        console.log(responseData.rules);
-    }
-
     return (
         <>
             <div className={styles.page__form}>
@@ -96,7 +71,7 @@ export default function ConfigAudit() {
                     name="typeaudit"
                 />  
                 <ButtonToRequest
-                    onClick={handleSubmit}
+                    onClick={getRegulationsList}
                     message="Cargar normativas sugeridas"
                 />
             </div>  
