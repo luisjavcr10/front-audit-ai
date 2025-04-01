@@ -88,6 +88,22 @@ export default function ConfigAudit() {
                     </div>
                 </div>
             )}
+
+            {rulesList && rulesList.length > 0 && (
+                <div className={styles.page__normativas}>
+                    <h2 className={styles.page__normativas__title}>Normativas Sugeridas</h2>
+                    <div className={styles.page__normativas__list}>
+                        {regulationsList.map((regulation, index) => (
+                            <div key={index} className={styles.page__normativas__list__item}>
+                                {regulation}
+                                <button onClick={() => handleRemoveRegulationsList(regulation)}>x</button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+
             <button onClick={getRulesList}>Obtener reglas sugeridas</button>
         </>
     )
