@@ -17,7 +17,7 @@ export const SelectToConfigAudit = ({
     name: string;
 }>) => {
     return (
-        <>
+        <div className={styles.Container}>
             <label className={styles.label} >{label}</label>
             <select 
                 className={styles.select}
@@ -32,6 +32,6 @@ export const SelectToConfigAudit = ({
                     </option>
                 ))}
             </select>
-        </>
+        </div>
     )
 }

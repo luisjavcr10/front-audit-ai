@@ -20,6 +20,16 @@ export default function ConfigAudit() {
     const [regulationsList, setRegulationsList] = useState<string[]>([]);
     const [rulesList, setRulesList] = useState<string[]>([]);
 
+    //dropdown menu
+    const [isOpenFirst, setIsOpenFirst] = useState(true);
+    const toggleDropdownFirst = () => {
+        setIsOpenFirst(!isOpenFirst);
+    };
+    const [isOpenSecond, setIsOpenSecond] = useState(false);
+    const toggleDropdownSecond = () => {
+        setIsOpenSecond(!isOpenSecond);
+    };
+
     const getRegulationsList = async () => {
         try {
             const body= {
@@ -28,6 +38,8 @@ export default function ConfigAudit() {
             }
             const recommendedRules = await getListOfRegulations(body);
             setRegulationsList(recommendedRules);
+            setIsOpenFirst(false);
+            setIsOpenSecond(true);
         } catch (error) {
             console.error('Error:', error);
         }   
@@ -37,74 +49,72 @@ export default function ConfigAudit() {
     const getRulesList = async () => {
         try {
             const request= {
-            sector: sector,
-            typeaudit: typeaudit,
-            cabeceras: CSVdata && CSVdata[0]? Object.keys(CSVdata[0]) : [],
-            normativas: regulationsList
+                sector: sector,
+                typeaudit: typeaudit,
+                cabeceras: CSVdata && CSVdata[0]? Object.keys(CSVdata[0]) : [],
+                normativas: regulationsList
             }
 
             const rules = await getListOfRules(request);
             setRulesList(rules);
+            console.log(rules);
         } catch (error) {
             console.error('Error:', error);
-        }
-        
+        }  
     }
 
     const handleRemoveRegulationsList = (regulation: string) => {
         setRegulationsList((prev)=> prev?.filter((reg)=> reg !== regulation));
     }
+
     
     return (
         <>
-            <div className={styles.page__form}>
-                <SelectToConfigAudit
-                    options={sectorOptions}
-                    handleSelected={setSector}
-                    label="Sector"
-                    name="sector"
-                />
-                <SelectToConfigAudit
-                    options={typeauditOptions}
-                    handleSelected={setTypeaudit}
-                    label="Type Audit"
-                    name="typeaudit"
-                />  
+            <div className={styles.DropdownMenu}>
+                <div onClick={toggleDropdownFirst} className={styles.DropdownMenu__Trigger}>Tipo y sector</div>
+                <div className={`${styles.DropdownMenu__Content} ${isOpenFirst ? styles.active : ''}`}>
+                    <div className={styles.DropdownMenu__SelectsDrop}>
+                        <SelectToConfigAudit
+                            options={sectorOptions}
+                            handleSelected={setSector}
+                            label="Sector"
+                            name="sector"
+                        />
+                        <SelectToConfigAudit
+                            options={typeauditOptions}
+                            handleSelected={setTypeaudit}
+                            label="Type Audit"
+                            name="typeaudit"
+                        />    
+                    </div>
+                    <ButtonToRequest
+                        onClick={getRegulationsList}
+                        message="Cargar normativas sugeridas"
+                    />
+                </div>
+            </div>
+            <div className={styles.DropdownMenu}>
+                <div onClick={toggleDropdownSecond} className={styles.DropdownMenu__Trigger}>Normativas</div>
+                <div className={`${styles.DropdownMenu__Content} ${isOpenSecond ? styles.active : ''}`}>
+                {regulationsList && regulationsList.length > 0 && (
+                    <div className={styles.page__normativas}>
+                        <div className={styles.page__normativas__list}>
+                            {regulationsList.map((regulation, index) => (
+                                <div key={index} className={styles.page__normativas__list__item}>
+                                    {regulation}
+                                    <button onClick={() => handleRemoveRegulationsList(regulation)}>x</button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
                 <ButtonToRequest
-                    onClick={getRegulationsList}
-                    message="Cargar normativas sugeridas"
+                    onClick={getRulesList}
+                    message="Obtener reglas sugeridas"
                 />
-            </div>  
-             {regulationsList && regulationsList.length > 0 && (
-                <div className={styles.page__normativas}>
-                    <h2 className={styles.page__normativas__title}>Normativas Sugeridas</h2>
-                    <div className={styles.page__normativas__list}>
-                        {regulationsList.map((regulation, index) => (
-                            <div key={index} className={styles.page__normativas__list__item}>
-                                {regulation}
-                                <button onClick={() => handleRemoveRegulationsList(regulation)}>x</button>
-                            </div>
-                        ))}
-                    </div>
                 </div>
-            )}
-
-            {rulesList && rulesList.length > 0 && (
-                <div className={styles.page__normativas}>
-                    <h2 className={styles.page__normativas__title}>Normativas Sugeridas</h2>
-                    <div className={styles.page__normativas__list}>
-                        {regulationsList.map((regulation, index) => (
-                            <div key={index} className={styles.page__normativas__list__item}>
-                                {regulation}
-                                <button onClick={() => handleRemoveRegulationsList(regulation)}>x</button>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
-
-
-            <button onClick={getRulesList}>Obtener reglas sugeridas</button>
+                
+            </div>
         </>
     )
 }
