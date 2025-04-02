@@ -5,11 +5,12 @@ import { useCSVContext } from '@/context/CSVContext';
 
 import { SelectToConfigAudit } from '@/components/Private/config-audit/SelectToConfigAudit';
 import { ButtonToRequest } from '@/components/Private/config-audit/ButtonToRequest';
+import { Loader } from '@/components/Shared/Loader';
 
 import { sectorOptions, typeauditOptions } from '@/constants/listConfigAudit';
 
 //Services
-import { getListOfRegulations, getListOfRules } from '@/services/apiService';
+import { getListOfRegulations, getListOfRules, getDashboard } from '@/services/apiService';
 
 import { FaChevronCircleDown } from "react-icons/fa";
 
@@ -27,6 +28,7 @@ export default function ConfigAudit() {
     const [typeaudit, setTypeaudit] = useState<string>('');
     const [regulationsList, setRegulationsList] = useState<string[]>([]);
     const [rulesList, setRulesList] = useState<Rule[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     //Dropdown menu
     const [isOpenFirst, setIsOpenFirst] = useState(true);
@@ -34,17 +36,20 @@ export default function ConfigAudit() {
         setIsOpenFirst(!isOpenFirst);
     };
     const [isDoneFirst, setIsDoneFirst] = useState(false);
+    const [isBlockFirst, setIsBlockFirst] = useState(false);
 
     const [isOpenSecond, setIsOpenSecond] = useState(false);
     const toggleDropdownSecond = () => {
         setIsOpenSecond(!isOpenSecond);
     };
     const [isDoneSecond, setIsDoneSecond] = useState(false);
+    const [isBlockSecond, setIsBlockSecond] = useState(true);
 
     const [isOpenThird, setIsOpenThird] = useState(false);
     const toggleDropdownThird = () => {
         setIsOpenThird(!isOpenThird);
     };
+    const [isBlockThird, setIsBlockThird] = useState(true);
 
     //Regulations Section
     const getRegulationsList = async () => {
@@ -53,11 +58,14 @@ export default function ConfigAudit() {
                 sector: sector,
                 typeaudit: typeaudit,
             }
+            setIsLoading(true);
             const recommendedRules = await getListOfRegulations(body);
+            setIsLoading(false);
             setRegulationsList(recommendedRules);
             setIsOpenFirst(false);
             setIsOpenSecond(true);
             setIsDoneFirst(true);
+            setIsBlockSecond(false);
         } catch (error) {
             console.error('Error:', error);
         }   
@@ -77,28 +85,45 @@ export default function ConfigAudit() {
                 cabeceras: CSVdata && CSVdata[0]? Object.keys(CSVdata[0]) : [],
                 normativas: regulationsList
             }
-
+            setIsLoading(true);
             const rules = await getListOfRules(request);
+            setIsLoading(false);
             setRulesList(rules );
             setIsOpenSecond(false);
             setIsOpenThird(true);
             setIsDoneSecond(true);
-            console.log(rules);
+            setIsBlockThird(false);
         } catch (error) {
             console.error('Error:', error);
         }  
     }
 
     const handleRemoveRulesList = (rule: Rule) => {
-        setRegulationsList((prev)=> prev?.filter((reg)=> reg !== rule.nombre));
+        setRulesList((prev) => prev.filter((r) => r.nombre !== rule.nombre));
+    }
+
+    //Go to dashboard
+    const goToDashboard = async () => {
+        const body= {
+            sector: sector,
+            typeaudit: typeaudit,
+            regulations: regulationsList,
+            rules: rulesList.map(rule => rule.nombre),
+            CSVdata: CSVdata
+        }
+        setIsLoading(true);
+        const response = await getDashboard(body);
+        setIsLoading(false);
+        console.log(response);
     }
     
     return (
         <>
+            {isLoading && <Loader/>}
             <div className={styles.DropdownMenu}>
                 <div 
                     onClick={toggleDropdownFirst} 
-                    className={styles.DropdownMenu__Trigger}
+                    className={`${styles.DropdownMenu__Trigger} ${isBlockFirst? styles.DropdownMenu__ContentBlock : ''}`}
                 >
                     Select your sector and type of audit
                     <FaChevronCircleDown 
@@ -134,7 +159,7 @@ export default function ConfigAudit() {
             <div className={styles.DropdownMenu}>
                 <div 
                     onClick={toggleDropdownSecond} 
-                    className={styles.DropdownMenu__Trigger}
+                    className={`${styles.DropdownMenu__Trigger} ${isBlockSecond? styles.DropdownMenu__ContentBlock : ''}`}
                 >
                     Applicable regulations for your audit
                     <FaChevronCircleDown 
@@ -179,7 +204,7 @@ export default function ConfigAudit() {
             <div className={styles.DropdownMenu}>
                 <div 
                     onClick={toggleDropdownThird} 
-                    className={styles.DropdownMenu__Trigger}
+                    className={`${styles.DropdownMenu__Trigger} ${isBlockThird? styles.DropdownMenu__ContentBlock : ''}`}
                 >
                     Recommended rules for your analysis
                     <FaChevronCircleDown 
@@ -210,7 +235,7 @@ export default function ConfigAudit() {
                     </div>
                 )}
                 <ButtonToRequest
-                    onClick={getRulesList}
+                    onClick={goToDashboard}
                     message="Execute audit analysis"
                 />
                 </div>

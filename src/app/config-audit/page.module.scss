@@ -10,7 +10,12 @@
     margin: 20px auto;
     padding: 20px;
 
-
+    &__Title{
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
     &__normativas {
         display: flex;

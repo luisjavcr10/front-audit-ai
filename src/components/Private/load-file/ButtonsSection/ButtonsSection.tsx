@@ -6,19 +6,18 @@ import { typeAuditList } from '@/constants/typeAuditList';
 import { FeatureButton } from "../FeatureButton"
 import { ModelIcon } from "@/utils/ModelIcon"
 import { TypeIcon } from "@/utils/TypeIcon"
+import Link from 'next/link';
 
 export const ButtonsSection = ({
     model,
     type,
     handleModel, 
     handleType,
-    handleSendRequest
 }: Readonly<{
     model: string | null;
     type: string | null;
     handleModel:(model: string)=> void; 
     handleType:(model: string)=> void ;
-    handleSendRequest: ()=> void;
 }>) =>{
     return(
         <div className={styles.ButtonsSection}>
@@ -40,9 +39,9 @@ export const ButtonsSection = ({
                     <TypeIcon/>
                 </FeatureButton> 
             </div>
-            <div onClick={handleSendRequest} className={styles.ButtonsSection__StartButton}>
+            <Link href='/config-audit' className={styles.ButtonsSection__StartButton}>
                 Audit with AI
-            </div>
+            </Link>
         </div>   
     )
 }

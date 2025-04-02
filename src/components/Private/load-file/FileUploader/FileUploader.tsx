@@ -18,7 +18,7 @@ export const FileUploader = () =>{
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
-    const {CSVdata, toggleCSV} = useCSVContext();
+    const {toggleCSV} = useCSVContext();
 
     const handleIsLoading = (value: boolean) => {
         setIsLoading(value);
@@ -43,7 +43,6 @@ export const FileUploader = () =>{
             setIsLoading(true);
             const data = await uploadFileFromLocalToBackend(file);
             setIsLoading(false);
-            //setParsedData(data);
             toggleCSV(data);
         } catch (error) {
             console.error("Error:", error);
@@ -61,22 +60,6 @@ export const FileUploader = () =>{
         setError(error);
     }
 
-    const sendRequest = () => {
-        const validationErrors = {
-            file: !CSVdata && 'Select a file',
-            model: !selectedModel && 'Select an AI model', 
-            type: !selectedType && 'Select an audit type'
-        };
-
-        const error = Object.values(validationErrors).find(Boolean);
-        
-        if (error) {
-            handleError(error);
-            return;
-        }
-        alert("Solicitud enviada con éxito.");
-    }
-
     return(
         <>
             <UploadFileInput onChangeLocal={handleUploadLocalFile} googleDrive={handleUploadGoogleDriveFile}/>
@@ -88,11 +71,10 @@ export const FileUploader = () =>{
                     type={selectedType}
                     handleModel={handleModelSelect} 
                     handleType={handleTypeSelect}
-                    handleSendRequest={sendRequest}
                 />        
             </div> 
 
-            {isLoading && <div className={styles.Loader}><Loader/></div>}
+            {isLoading && <Loader/>}
 
             {error && <ErrorToast errorMessage={error} onClose={()=>setError(null)}/>  }
         </>
