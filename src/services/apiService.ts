@@ -20,6 +20,13 @@ interface BodyToGetListOfRules{
   normativas: string[];
 }
 
+interface Rule{
+  nombre: string;
+  descripcion: string;
+  normativaRelacionada: string;
+  severidad: string;
+}
+
 export const uploadFileFromGoogleDriveToBackend = async (
   fileBlob: Blob, 
   fileName: string, 
@@ -103,7 +110,7 @@ export const getListOfRegulations = async (
 
 export const getListOfRules = async (
   body: BodyToGetListOfRules
-): Promise<string[]> => {
+): Promise<Rule[]> => {
   try {
     const response = await fetch(`${API_BASE_URL}/getRules`, {
       method: 'POST',
