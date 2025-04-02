@@ -1,6 +1,4 @@
 import styles from './SelectToConfigAudit.module.scss';
-import { FaBuilding } from "react-icons/fa";
-
 
 interface SelectOption {
     value: string;
@@ -21,7 +19,6 @@ export const SelectToConfigAudit = ({
     return (
         <div className={styles.Container}>
             <div className={styles.Container__LabelSecion}>
-                <FaBuilding/>
                 <label className={styles.label} >{label}</label>
             </div>
             

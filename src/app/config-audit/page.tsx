@@ -13,6 +13,9 @@ import { sectorOptions, typeauditOptions } from '@/constants/listConfigAudit';
 import { getListOfRegulations, getListOfRules, getDashboard } from '@/services/apiService';
 
 import { FaChevronCircleDown } from "react-icons/fa";
+import { FaBuilding } from "react-icons/fa";
+import { IoIosPaper } from "react-icons/io";
+import { FaClipboardCheck } from "react-icons/fa6";
 
 interface Rule{
     nombre: string;
@@ -125,7 +128,11 @@ export default function ConfigAudit() {
                     onClick={toggleDropdownFirst} 
                     className={`${styles.DropdownMenu__Trigger} ${isBlockFirst? styles.DropdownMenu__ContentBlock : ''}`}
                 >
-                    Select your sector and type of audit
+                    <div className={styles.DropdownMenu__Trigger__Title}>
+                        <FaBuilding />
+                        Select your sector and type of audit
+                    </div>
+                    
                     <FaChevronCircleDown 
                         className={`${ styles.DropdownMenu__Icon} ${isOpenFirst? styles.rotate: ''}`}
                     />
@@ -161,7 +168,11 @@ export default function ConfigAudit() {
                     onClick={toggleDropdownSecond} 
                     className={`${styles.DropdownMenu__Trigger} ${isBlockSecond? styles.DropdownMenu__ContentBlock : ''}`}
                 >
-                    Applicable regulations for your audit
+                    <div className={styles.DropdownMenu__Trigger__Title}>
+                        <IoIosPaper />
+                        Applicable regulations for your audit
+                    </div>
+                    
                     <FaChevronCircleDown 
                         className={`${ styles.DropdownMenu__Icon} ${isOpenSecond? styles.rotate: ''}`}
                     />
@@ -206,7 +217,11 @@ export default function ConfigAudit() {
                     onClick={toggleDropdownThird} 
                     className={`${styles.DropdownMenu__Trigger} ${isBlockThird? styles.DropdownMenu__ContentBlock : ''}`}
                 >
-                    Recommended rules for your analysis
+                    <div className={styles.DropdownMenu__Trigger__Title}>
+                        <FaClipboardCheck />
+                        Recommended rules for your analysis
+                    </div>
+                    
                     <FaChevronCircleDown 
                         className={`${ styles.DropdownMenu__Icon} ${isOpenThird? styles.rotate: ''}`}
                     />
