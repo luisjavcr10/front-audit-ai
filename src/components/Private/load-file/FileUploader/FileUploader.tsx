@@ -56,10 +56,6 @@ export const FileUploader = () =>{
         }, handleLoading: handleIsLoading
     });
 
-    const handleError = (error: string) => {
-        setError(error);
-    }
-
     return(
         <>
             <UploadFileInput onChangeLocal={handleUploadLocalFile} googleDrive={handleUploadGoogleDriveFile}/>

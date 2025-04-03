@@ -42,7 +42,7 @@ export default function ConfigAudit() {
         setIsOpenFirst(!isOpenFirst);
     };
     const [isDoneFirst, setIsDoneFirst] = useState(false);
-    const [isBlockFirst, setIsBlockFirst] = useState(false);
+    const [isBlockFirst] = useState(false);
 
     const [isOpenSecond, setIsOpenSecond] = useState(false);
     const toggleDropdownSecond = () => {
