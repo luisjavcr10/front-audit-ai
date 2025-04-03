@@ -17,7 +17,7 @@ export function CSVProvider({ children }: { children: React.ReactNode }) {
     const [CSVdata, setCSVdata] = useState<CSVRow[] | null>(null);
 
     useEffect(() => {
-        const storedData = localStorage.getItem("CSVdata");
+        const storedData = sessionStorage.getItem("CSVdata"); // Cambiado a sessionStorage
         if (storedData) {
             setCSVdata(JSON.parse(storedData));
         }
@@ -25,7 +25,7 @@ export function CSVProvider({ children }: { children: React.ReactNode }) {
 
     const toggleCSV = (data: CSVRow[]) => {
         setCSVdata(data);
-        localStorage.setItem("CSVdata", JSON.stringify(data)); 
+        sessionStorage.setItem("CSVdata", JSON.stringify(data)); // Cambiado a sessionStorage
     };
 
     return (

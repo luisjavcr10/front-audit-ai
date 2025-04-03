@@ -1,0 +1,24 @@
+.Trigger{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.ContentBlock{
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.Icon{
+    transition: transform 0.3s ease;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    will-change: transform;
+    &.rotate{
+        transform: rotate(180deg); 
+        -webkit-transform: rotate(180deg); 
+    }
+}

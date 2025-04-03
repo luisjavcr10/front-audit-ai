@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import styles from './Loader.module.scss';
 
 export const Loader = () => {
   return (
+    <div className={styles.Loader}>
     <StyledWrapper>
       <div className="boxes">
         <div className="box">
@@ -31,6 +33,7 @@ export const Loader = () => {
         </div>
       </div>
     </StyledWrapper>
+    </div>
   );
 }
 

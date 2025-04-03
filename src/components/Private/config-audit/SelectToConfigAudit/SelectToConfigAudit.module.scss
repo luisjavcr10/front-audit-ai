@@ -1,8 +1,29 @@
+.Container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @media screen and (min-width: 768px) {
+        width: 50%;
+    }
+    &__LabelSecion{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items:center;
+        gap: 10px;
+        padding: 4px 8px;
+    }
+}
+
 .label {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 300;
     margin-bottom: 5px;
     color: var(--text);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
 }
 
 .select {
@@ -11,6 +32,8 @@
     border: 1px solid var(--shadow);
     background-color: var(--background);
     color: var(--text);
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 300;
     margin-bottom: 10px;
+    outline-color: var(--color-blue-level-2);    
 }

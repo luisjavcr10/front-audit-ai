@@ -1,0 +1,1 @@
+export {RegulationsList} from './RegulationsList';

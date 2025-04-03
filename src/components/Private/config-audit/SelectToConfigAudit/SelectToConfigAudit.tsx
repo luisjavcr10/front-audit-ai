@@ -17,8 +17,11 @@ export const SelectToConfigAudit = ({
     name: string;
 }>) => {
     return (
-        <>
-            <label className={styles.label} >{label}</label>
+        <div className={styles.Container}>
+            <div className={styles.Container__LabelSecion}>
+                <label className={styles.label} >{label}</label>
+            </div>
+            
             <select 
                 className={styles.select}
                 onChange={(e) => handleSelected(e.target.value)} 
@@ -32,6 +35,6 @@ export const SelectToConfigAudit = ({
                     </option>
                 ))}
             </select>
-        </>
+        </div>
     )
 }

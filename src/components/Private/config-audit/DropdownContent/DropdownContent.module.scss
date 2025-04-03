@@ -1,0 +1,12 @@
+.Content{
+    display: none;
+    flex-direction: column;
+    &.active{
+        display: flex;
+    }
+}
+
+.ContentBlock{
+    pointer-events: none;
+    opacity: 0.5;
+}

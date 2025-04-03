@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     padding: 15px 30px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--text);
     background-color: var(--background-table);
@@ -11,12 +11,9 @@
     border-radius: 10px;
     box-shadow: 0 0 4px 0 var(--shadow);
     margin-top: 15px;
-    transition-duration: 500ms;
     cursor: pointer;
 
     &:hover {
-        scale: 1.05;
-        transition-duration: 1s;
         background-color: var(--background);
     }
 }
