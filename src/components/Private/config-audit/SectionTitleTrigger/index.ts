@@ -1,0 +1,1 @@
+export {SectionTitleTrigger} from './SectionTitleTrigger';

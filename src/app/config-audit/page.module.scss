@@ -100,12 +100,6 @@
         gap: 20px;
         font-weight: 500;
         cursor: pointer;
-        &__Title{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 10px;
-        }
     }
         
     &__Content{
@@ -132,13 +126,4 @@
         }
     }
 
-    &__Icon{
-        transition: transform 0.3s ease;
-        -webkit-transition: -webkit-transform 0.3s ease;
-        will-change: transform;
-        &.rotate{
-            transform: rotate(180deg); 
-            -webkit-transform: rotate(180deg); 
-        }
-    }
 }

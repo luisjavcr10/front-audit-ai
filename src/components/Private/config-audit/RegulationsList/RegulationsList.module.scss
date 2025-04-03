@@ -1,0 +1,94 @@
+.List {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--background-table);
+    border-radius: 10px;
+    box-shadow: 0 0 4px 0 var(--shadow);
+
+    &__item {
+        position: relative;
+        padding: 10px 15px;
+        background-color: var(--background);
+        border-radius: 5px;
+        color: var(--text);
+        font-size: 16px;
+        box-shadow: 0 0 2px 0 var(--shadow);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        &__input {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 16px;
+            width: 90%;
+            outline: none;
+            cursor: default;
+        }
+        
+        &__button {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0 5px;
+            
+            &:hover {
+                color: var(--error);
+            }
+        }
+    }
+}
+
+.ToggleMenu{
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    right:0;
+    z-index: 10;
+    background-color: var(--background);
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 0 var(--shadow);
+
+    &__Delete{
+        display: flex;
+        justify-content: flex-start;
+        align-items:center;
+        border: none;
+        padding: 10px 20px;
+        background-color: transparent;
+        gap: 5px;
+        color: red;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    }
+
+    &__Edit{
+        display: flex;
+        justify-content: flex-start;
+        align-items:center;
+        border: none;
+        padding: 10px 20px;
+        background-color: transparent;
+        gap: 5px;
+        color: var(--text);
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+            background-color:  var(--background-table);
+        }
+    }
+}

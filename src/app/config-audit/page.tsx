@@ -6,13 +6,16 @@ import { useCSVContext } from '@/context/CSVContext';
 import { SelectToConfigAudit } from '@/components/Private/config-audit/SelectToConfigAudit';
 import { ButtonToRequest } from '@/components/Private/config-audit/ButtonToRequest';
 import { Loader } from '@/components/Shared/Loader';
+import { TriggerSection } from '@/components/Private/config-audit/TriggerSection';
+import { SectionTitleTrigger } from '@/components/Private/config-audit/SectionTitleTrigger';
+import { DropdownContent } from '@/components/Private/config-audit/DropdownContent';
+import { RegulationsList } from '@/components/Private/config-audit/RegulationsList';
 
 import { sectorOptions, typeauditOptions } from '@/constants/listConfigAudit';
 
 //Services
 import { getListOfRegulations, getListOfRules, getDashboard } from '@/services/apiService';
 
-import { FaChevronCircleDown } from "react-icons/fa";
 import { FaBuilding } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import { FaClipboardCheck } from "react-icons/fa6";
@@ -124,24 +127,19 @@ export default function ConfigAudit() {
         <>
             {isLoading && <Loader/>}
             <div className={styles.DropdownMenu}>
-                <div 
-                    onClick={toggleDropdownFirst} 
-                    className={`${styles.DropdownMenu__Trigger} ${isBlockFirst? styles.DropdownMenu__ContentBlock : ''}`}
+                <TriggerSection 
+                    toggleDropdown={toggleDropdownFirst}
+                    isBlock={isBlockFirst}
+                    isOpen={isOpenFirst}
                 >
-                    <div className={styles.DropdownMenu__Trigger__Title}>
-                        <FaBuilding />
-                        Select your sector and type of audit
-                    </div>
-                    
-                    <FaChevronCircleDown 
-                        className={`${ styles.DropdownMenu__Icon} ${isOpenFirst? styles.rotate: ''}`}
-                    />
-                </div>
-                <div 
-                    className={`${styles.DropdownMenu__Content} 
-                                ${isOpenFirst ? styles.active : ''}
-                                ${isDoneFirst ? styles.DropdownMenu__ContentBlock : ''}`
-                    }
+                    <SectionTitleTrigger titleText='Select your sector and type of audit'>
+                        <FaBuilding />  
+                    </SectionTitleTrigger>
+                </TriggerSection>
+
+                <DropdownContent
+                    isOpen={isOpenFirst}
+                    isDone={isDoneFirst}
                 >
                     <div className={styles.DropdownMenu__SelectsDrop}>
                         <SelectToConfigAudit
@@ -161,74 +159,53 @@ export default function ConfigAudit() {
                         onClick={getRegulationsList}
                         message="View recommended regulations"
                     />
-                </div>
+                </DropdownContent>
+                
+                
             </div>
             <div className={styles.DropdownMenu}>
-                <div 
-                    onClick={toggleDropdownSecond} 
-                    className={`${styles.DropdownMenu__Trigger} ${isBlockSecond? styles.DropdownMenu__ContentBlock : ''}`}
+                <TriggerSection 
+                    toggleDropdown={toggleDropdownSecond}
+                    isBlock={isBlockSecond}
+                    isOpen={isOpenSecond}
                 >
-                    <div className={styles.DropdownMenu__Trigger__Title}>
-                        <IoIosPaper />
-                        Applicable regulations for your audit
-                    </div>
-                    
-                    <FaChevronCircleDown 
-                        className={`${ styles.DropdownMenu__Icon} ${isOpenSecond? styles.rotate: ''}`}
-                    />
-                </div>
-                <div 
-                    className={`
-                                ${styles.DropdownMenu__Content} 
-                                ${isOpenSecond ? styles.active : ''}
-                                ${isDoneSecond ? styles.DropdownMenu__ContentBlock : ''}
-                    `}
+                   <SectionTitleTrigger titleText='Applicable regulations for your audit'>
+                        <IoIosPaper />  
+                    </SectionTitleTrigger>
+                </TriggerSection>
+                <DropdownContent
+                    isOpen={isOpenSecond}
+                    isDone={isDoneSecond}
                 >
                 {regulationsList && regulationsList.length > 0 && (
-                    <div className={styles.page__normativas}>
-                        <div className={styles.page__normativas__list}>
-                            {regulationsList.map((regulation, index) => (
-                                <div key={index} className={styles.page__normativas__list__item}>
-                                    <input 
-                                        type="text" 
-                                        value={regulation} 
-                                        readOnly 
-                                        className={styles.page__normativas__list__item__input}
-                                    />
-                                    <button 
-                                        onClick={() => handleRemoveRegulationsList(regulation)}
-                                        className={styles.page__normativas__list__item__button}
-                                    >
-                                        x
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <RegulationsList 
+                        regulationsList={regulationsList} 
+                        handleRemoveRegulationsList={handleRemoveRegulationsList}
+                    />
+                        
                 )}
                 <ButtonToRequest
                     onClick={getRulesList}
                     message="Generate audit rules"
                 />
-                </div>
+                </DropdownContent>
             </div>
             <div className={styles.DropdownMenu}>
-                <div 
-                    onClick={toggleDropdownThird} 
-                    className={`${styles.DropdownMenu__Trigger} ${isBlockThird? styles.DropdownMenu__ContentBlock : ''}`}
+
+                <TriggerSection 
+                    toggleDropdown={toggleDropdownThird}
+                    isBlock={isBlockThird}
+                    isOpen={isOpenThird}
                 >
-                    <div className={styles.DropdownMenu__Trigger__Title}>
-                        <FaClipboardCheck />
-                        Recommended rules for your analysis
-                    </div>
-                    
-                    <FaChevronCircleDown 
-                        className={`${ styles.DropdownMenu__Icon} ${isOpenThird? styles.rotate: ''}`}
-                    />
-                </div>
-                <div className={`${styles.DropdownMenu__Content} ${isOpenThird ? styles.active : ''}`}>
-                {rulesList && rulesList.length > 0 && (
-                    <div className={styles.page__normativas}>
+                   <SectionTitleTrigger titleText='Recommended rules for your analysis'>
+                        <FaClipboardCheck />  
+                    </SectionTitleTrigger>
+                </TriggerSection>
+
+                <DropdownContent
+                    isOpen={isOpenThird}
+                >
+                    {rulesList && rulesList.length > 0 && (
                         <div className={styles.page__normativas__list}>
                             {rulesList.map((rule, index) => (
                                 <div key={index} className={styles.page__normativas__list__item}>
@@ -247,13 +224,12 @@ export default function ConfigAudit() {
                                 </div>
                             ))}
                         </div>
-                    </div>
-                )}
-                <ButtonToRequest
-                    onClick={goToDashboard}
-                    message="Execute audit analysis"
-                />
-                </div>
+                    )}
+                    <ButtonToRequest
+                        onClick={goToDashboard}
+                        message="Execute audit analysis"
+                    />
+                </DropdownContent>
             </div>
         </>
     )
