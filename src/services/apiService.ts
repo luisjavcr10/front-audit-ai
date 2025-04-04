@@ -48,6 +48,10 @@ interface ChartData {
   }>;
 }
 
+interface DataResponseDashboard{
+ auditResponseDtoList: Grafic[];
+}
+
 interface Grafic {
   title: string;
   typeGrafic: string;
@@ -172,7 +176,7 @@ export const getListOfRules = async (
 
 export const getDashboard = async (
   body: BodyToGetDashboard
-): Promise<Grafic[]> => {
+): Promise<DataResponseDashboard> => {
   try {
     const response = await fetch(`${API_BASE_URL}/analysis`, {
       method: 'POST',
@@ -192,6 +196,6 @@ export const getDashboard = async (
     return data;  
   } catch (error) {
     console.error('Error:', error);
-    return [];  
+    return {auditResponseDtoList:[]};  
   }
 };
