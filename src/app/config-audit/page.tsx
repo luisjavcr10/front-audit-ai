@@ -110,17 +110,25 @@ export default function ConfigAudit() {
 
     //Go to dashboard
     const goToDashboard = async () => {
-        const body= {
-            sector: sector,
-            typeaudit: typeaudit,
-            regulations: regulationsList,
-            rules: rulesList.map(rule => rule.nombre),
-            CSVdata: CSVdata
+        try {
+            const body = {
+                sector: sector,
+                typeaudit: typeaudit,
+                regulations: regulationsList,
+                rules: rulesList.map(rule => rule.nombre),
+                CSVdata: CSVdata
+            }
+            console.log(body);
+            setIsLoading(true);
+            const response = await getDashboard(body);
+            setIsLoading(false);
+            sessionStorage.setItem('tempDashboardData', JSON.stringify(response.auditResponseDtoList));
+            window.location.href = '/dashboard';
+            console.log(response);
+        } catch (error) {
+            console.error('Error executing dashboard analysis:', error);
+            setIsLoading(false);
         }
-        setIsLoading(true);
-        const response = await getDashboard(body);
-        setIsLoading(false);
-        console.log(response);
     }
     
     return (
