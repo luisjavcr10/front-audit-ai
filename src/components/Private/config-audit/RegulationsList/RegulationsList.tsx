@@ -31,43 +31,41 @@ export const RegulationsList = ({
     };
 
     return(
-        <>
-            <div className={styles.List} ref={menuRef}>
-                {regulationsList.map((regulation, index) => (
-                    <div key={index} className={styles.List__item}>
-                        <input 
-                            type="text" 
-                            value={regulation} 
-                            readOnly 
-                            className={styles.List__item__input}
-                        />
-                        <button 
-                            onClick={() => toggleMenu(index)}
-                            className={styles.List__item__button}
-                        >
-                            <HiDotsHorizontal />
-                        </button>
-                        {activeMenuIndex === index && (
-                            <div className={styles.ToggleMenu}>
-                                <button 
-                                    onClick={() => handleRemoveRegulationsList(regulation)}
-                                    className={styles.ToggleMenu__Edit}
-                                >
-                                    <FiEdit3/>
-                                    Edit
-                                </button>
-                                <button 
-                                    onClick={() => handleRemoveRegulationsList(regulation)}
-                                    className={styles.ToggleMenu__Delete}
-                                >
-                                    <FiTrash2/>
-                                    Delete
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div> 
-        </>
+        <div className={styles.List} ref={menuRef}>
+            {regulationsList.map((regulation, index) => (
+                <div key={index} className={styles.List__item}>
+                    <input 
+                        type="text" 
+                        value={regulation} 
+                        readOnly 
+                        className={styles.List__item__input}
+                    />
+                    <button 
+                        onClick={() => toggleMenu(index)}
+                        className={styles.List__item__button}
+                    >
+                        <HiDotsHorizontal />
+                    </button>
+                    {activeMenuIndex === index && (
+                        <div className={styles.ToggleMenu}>
+                            <button 
+                                onClick={() => handleRemoveRegulationsList(regulation)}
+                                className={styles.ToggleMenu__Edit}
+                            >
+                                <FiEdit3/>
+                                Edit
+                            </button>
+                            <button 
+                                onClick={() => handleRemoveRegulationsList(regulation)}
+                                className={styles.ToggleMenu__Delete}
+                            >
+                                <FiTrash2/>
+                                Delete
+                            </button>
+                        </div>
+                    )}
+                </div>
+            ))}
+        </div> 
     )
 }

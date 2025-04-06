@@ -92,29 +92,6 @@
     border-radius: 10px;
     box-shadow: 0 0 4px 0 var(--shadow);
 
-    &__Trigger{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        font-weight: 500;
-        cursor: pointer;
-    }
-        
-    &__Content{
-        display: none;
-        flex-direction: column;
-        &.active{
-            display: flex;
-        }
-    }
-
-    &__ContentBlock{
-        pointer-events: none;
-        opacity: 0.5;
-    }
-
     &__SelectsDrop{
         display: flex;
         flex-direction: column;

@@ -1,7 +1,3 @@
-/**
- * Servicio para manejar las llamadas al backend
- */
-
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 
 interface CSVRow {

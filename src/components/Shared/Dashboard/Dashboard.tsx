@@ -75,13 +75,12 @@ const chartOptions = {
   },
 };
 
-
- interface Grafic {
-   title: string;
-   typeGrafic: string;
-   chartData: ChartData;
-   description: string;
- }
+interface Grafic {
+  title: string;
+  typeGrafic: string;
+  chartData: ChartData;
+  description: string;
+}
 
 const Dashboard = ({grafics}: Readonly<{grafics:Grafic[]}>) => {
   return (
