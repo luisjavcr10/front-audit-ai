@@ -27,22 +27,13 @@ interface Rule{
     severidad: string;
 }
 
-const exampleRules= [
-{
-    nombre: 'Luis Javier Castillo',
-    descripcion: 'sdlfjslafsd',
-    normativaRelacionada: 'NOW',
-    severidad: 'sdfds',
-}
-]
-
 export default function ConfigAudit() {
     const {CSVdata} = useCSVContext();
 
     const [sector, setSector] = useState<string>('');
     const [typeaudit, setTypeaudit] = useState<string>('');
-    const [regulationsList, setRegulationsList] = useState<string[]>(['NOW']);
-    const [rulesList, setRulesList] = useState<Rule[]>(exampleRules);
+    const [regulationsList, setRegulationsList] = useState<string[]>([]);
+    const [rulesList, setRulesList] = useState<Rule[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
     //Dropdown menu
