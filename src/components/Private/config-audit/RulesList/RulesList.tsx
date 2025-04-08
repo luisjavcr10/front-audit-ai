@@ -2,13 +2,7 @@ import styles from './RulesList.module.scss';
 import { useState, useRef, useEffect } from 'react';
 import { OptionsList } from '../OptionsList';
 import { HiDotsHorizontal } from "react-icons/hi";
-
-interface Rule{
-    nombre: string;
-    descripcion: string;
-    normativaRelacionada: string;
-    severidad: string;
-}
+import { Rule } from '@/types/Rule';
 
 export const RulesList = ({
     rulesList,

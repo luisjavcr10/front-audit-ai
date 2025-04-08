@@ -3,12 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'; 
 import styles from '../Navbar.module.scss';
-
-const links = [
-  { path: '/', label: 'Home' },
-  { path: '/load-file', label: 'LoadFile' },
-  { path: '/dashboard', label: 'Dashboard' }
-];
+import { links } from '@/constants/LinksNavbar';
 
 export const Links = () => {
   const pathname = usePathname(); 

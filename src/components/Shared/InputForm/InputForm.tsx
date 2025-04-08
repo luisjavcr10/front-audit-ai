@@ -1,11 +1,7 @@
 import styles from './InputForm.module.scss';
+import { InputFormProps } from '@/types/InputFormProps';
 
-interface typeProps {
-    title: string
-    feature: string
-}
-
-export const InputForm = ({type, children}: Readonly<{type:typeProps; children?:React.ReactNode}>) => {
+export const InputForm = ({type, children}: Readonly<{type:InputFormProps; children?:React.ReactNode}>) => {
     return(
         <div className={styles.InputForm}>
             <label>{type.title}</label>

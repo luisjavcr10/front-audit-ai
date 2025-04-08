@@ -43,19 +43,6 @@ const chartComponents = {
   Scatter
 } as const;
 
-interface ChartData {
-  labels?: string[];
-  datasets: Array<{
-    label?: string;
-    data: number[] | {x: number, y: number, r?: number}[];
-    backgroundColor?: string | string[];
-    borderColor?: string | string[];
-    borderWidth?: number;
-    tension?: number;
-    fill?: boolean;
-  }>;
-}
-
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -75,14 +62,9 @@ const chartOptions = {
   },
 };
 
-interface Grafic {
-  title: string;
-  typeGrafic: string;
-  chartData: ChartData;
-  description: string;
-}
+import { Grafic } from '@/types/Grafic';
 
-const Dashboard = ({grafics}: Readonly<{grafics:Grafic[]}>) => {
+export const Dashboard = ({grafics}: Readonly<{grafics:Grafic[]}>) => {
   return (
     <DashboardContainer>
       {grafics.map((chart, index) => {
@@ -107,5 +89,3 @@ const Dashboard = ({grafics}: Readonly<{grafics:Grafic[]}>) => {
     </DashboardContainer>
   );
 };
-
-export default Dashboard;

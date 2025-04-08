@@ -1,7 +1,6 @@
 import styles from './RegulationsList.module.scss';
-import { useState, useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { FiMinusCircle } from "react-icons/fi";
-import { OptionsList } from '../OptionsList';
 
 export const RegulationsList = ({
     regulationsList,
@@ -10,25 +9,7 @@ export const RegulationsList = ({
     regulationsList:string[];
     handleRemoveRegulationsList: (regulation: string) => void;
 }>) => {
-    const [activeMenuIndex, setActiveMenuIndex] = useState<number | null>(null);
     const menuRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-                setActiveMenuIndex(null);
-            }
-        };
-        
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
-    const toggleMenu = (index: number) => {
-        setActiveMenuIndex(activeMenuIndex === index ? null : index);
-    };
 
     return(
         <div className={styles.List} ref={menuRef}>

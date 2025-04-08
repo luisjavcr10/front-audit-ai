@@ -1,12 +1,6 @@
 import styles from './OptionsList.module.scss';
 import { FiTrash2,FiEdit3 } from "react-icons/fi";
-
-interface Rule{
-    nombre: string;
-    descripcion: string;
-    normativaRelacionada: string;
-    severidad: string;
-}
+import { Rule } from '@/types/Rule';
 
 export const OptionsList = ({
     rule,

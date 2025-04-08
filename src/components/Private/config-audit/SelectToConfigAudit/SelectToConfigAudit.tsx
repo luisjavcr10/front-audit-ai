@@ -1,9 +1,5 @@
 import styles from './SelectToConfigAudit.module.scss';
-
-interface SelectOption {
-    value: string;
-    label: string;
-}
+import { SelectOption } from '@/types/SelectOption';
 
 export const SelectToConfigAudit = ({
     options, 

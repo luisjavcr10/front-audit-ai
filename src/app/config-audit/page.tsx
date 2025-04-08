@@ -20,13 +20,7 @@ import { getListOfRegulations, getListOfRules, getDashboard } from '@/services/a
 import { FaBuilding } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import { FaClipboardCheck } from "react-icons/fa6";
-
-interface Rule{
-    nombre: string;
-    descripcion: string;
-    normativaRelacionada: string;
-    severidad: string;
-}
+import { Rule } from '@/types/Rule';
 
 export default function ConfigAudit() {
     const {CSVdata} = useCSVContext();

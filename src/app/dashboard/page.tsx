@@ -1,26 +1,9 @@
 "use client"
 import styles from './page.module.scss';
-import Dashboard from "@/components/Shared/Dashboard/Dashboard"
+import {Dashboard} from "@/components/Shared/Dashboard"
 import { useState,useEffect } from 'react';
 
-interface Grafic {
-  title: string;
-  typeGrafic: string;
-  chartData: ChartData;
-  description: string;
-}
-interface ChartData {
-  labels?: string[];
-  datasets: Array<{
-    label?: string;
-    data: number[] | {x: number, y: number, r?: number}[];
-    backgroundColor?: string | string[];
-    borderColor?: string | string[];
-    borderWidth?: number;
-    tension?: number;
-    fill?: boolean;
-  }>;
-}
+import { Grafic } from '@/types/Grafic';
 
 export default function Page() {
   const [grafics, setGrafics] = useState<Grafic[] | undefined>([]); 

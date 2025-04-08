@@ -1,15 +1,8 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-
-interface CSVRow {
-    [key: string]: string | number | boolean | null;
-}
-
-interface CSVContextType {
-    CSVdata: CSVRow[] | null;
-    toggleCSV: (data: CSVRow[]) => void;
-}
+import { CSVRow } from '@/types/CSVRow';
+import { CSVContextType } from '@/types/CSVContextType';
 
 const CSVContext = createContext<CSVContextType | undefined>(undefined);
 
