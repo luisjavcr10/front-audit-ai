@@ -1,5 +1,4 @@
 import { CSVRow } from './CSVRow';
-import { Rule } from './Rule';
 import { Grafic } from './Grafic';
 
 export interface BodyToGetRegulations {

@@ -1,59 +1,10 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
-
-interface CSVRow {
-  [key: string]: string | number | boolean | null;
-}
-
-interface BodyToGetRegulations{
-  sector: string;
-  typeaudit:string;
-}
-
-interface BodyToGetListOfRules{
-  sector: string;
-  typeaudit:string;
-  cabeceras: string[];
-  normativas: string[];
-}
-
-interface Rule{
-  nombre: string;
-  descripcion: string;
-  normativaRelacionada: string;
-  severidad: string;
-}
-
-interface BodyToGetDashboard{
-  sector: string;
-  typeaudit:string;
-  regulations: string[];
-  rules: string[];
-  CSVdata: CSVRow[] | null;
-}
-
-interface ChartData {
-  labels?: string[];
-  datasets: Array<{
-    label?: string;
-    data: number[] | {x: number, y: number, r?: number}[];
-    backgroundColor?: string | string[];
-    borderColor?: string | string[];
-    borderWidth?: number;
-    tension?: number;
-    fill?: boolean;
-  }>;
-}
-
-interface DataResponseDashboard{
- auditResponseDtoList: Grafic[];
-}
-
-interface Grafic {
-  title: string;
-  typeGrafic: string;
-  chartData: ChartData;
-  description: string;
-}
+import { CSVRow } from "@/types/CSVRow";
+import { BodyToGetDashboard } from "@/types/ApiTypes";
+import { BodyToGetListOfRules } from "@/types/ApiTypes";
+import { BodyToGetRegulations } from "@/types/ApiTypes";
+import { Rule } from "@/types/Rule";
+import { DataResponseDashboard } from "@/types/ApiTypes";
 
 
 export const uploadFileFromGoogleDriveToBackend = async (
