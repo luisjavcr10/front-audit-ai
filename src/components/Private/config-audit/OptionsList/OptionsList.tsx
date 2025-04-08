@@ -5,14 +5,16 @@ import { Rule } from '@/types/Rule';
 export const OptionsList = ({
     rule,
     deleteRule,
+    editRule,
 }: Readonly<{
     rule: Rule;
     deleteRule: (rule: Rule) => void;
+    editRule: () => void;
 }>) =>{
     return(
         <div className={styles.OptionsList}>
             <button 
-                onClick={() => deleteRule(rule)}
+                onClick={editRule}
                 className={styles.OptionsList__Edit}
             >
                 <FiEdit3/>

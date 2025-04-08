@@ -103,6 +103,16 @@ export default function ConfigAudit() {
         setRulesList((prev) => prev.filter((r) => r.nombre !== rule.nombre));
     }
 
+    const handleEditRuleName = (oldRule: Rule, newName: string) => {
+        setRulesList((prev) => 
+            prev.map((r) => 
+                r.nombre === oldRule.nombre 
+                    ? {...r, nombre: newName} 
+                    : r
+            )
+        );
+    }
+
     //Go to dashboard
     const goToDashboard = async () => {
         try {
@@ -209,7 +219,11 @@ export default function ConfigAudit() {
                     isOpen={isOpenThird}
                 >
                     {rulesList && rulesList.length > 0 && (
-                        <RulesList rulesList={rulesList} deleteRule={handleRemoveRulesList}/>
+                        <RulesList 
+                            rulesList={rulesList} 
+                            deleteRule={handleRemoveRulesList}
+                            editRule={handleEditRuleName}
+                        />
                         
                     )}
                     <ButtonToRequest
