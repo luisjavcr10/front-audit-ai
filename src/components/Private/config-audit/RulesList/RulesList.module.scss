@@ -77,7 +77,7 @@
         }
         &__buttonCheck{        
             &:hover {
-                color: #5F8B4C;
+                color: var(--color-blue-level-3);
             }
         }
     }
