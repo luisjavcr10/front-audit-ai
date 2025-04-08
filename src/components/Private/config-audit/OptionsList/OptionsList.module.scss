@@ -1,0 +1,48 @@
+
+.OptionsList{
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    right:0;
+    z-index: 10;
+    background-color: var(--background);
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 0 var(--shadow);
+
+    &__Delete{
+        display: flex;
+        justify-content: flex-start;
+        align-items:center;
+        border: none;
+        padding: 10px 20px;
+        background-color: transparent;
+        gap: 5px;
+        color: red;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    }
+
+    &__Edit{
+        display: flex;
+        justify-content: flex-start;
+        align-items:center;
+        border: none;
+        padding: 10px 20px;
+        background-color: transparent;
+        gap: 5px;
+        color: var(--text);
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover{
+            background-color:  var(--background-table);
+        }
+    }
+}

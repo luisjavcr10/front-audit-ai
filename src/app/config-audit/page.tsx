@@ -10,6 +10,7 @@ import { TriggerSection } from '@/components/Private/config-audit/TriggerSection
 import { SectionTitleTrigger } from '@/components/Private/config-audit/SectionTitleTrigger';
 import { DropdownContent } from '@/components/Private/config-audit/DropdownContent';
 import { RegulationsList } from '@/components/Private/config-audit/RegulationsList';
+import { RulesList } from '@/components/Private/config-audit/RulesList/RulesList';
 
 import { sectorOptions, typeauditOptions } from '@/constants/listConfigAudit';
 
@@ -19,13 +20,7 @@ import { getListOfRegulations, getListOfRules, getDashboard } from '@/services/a
 import { FaBuilding } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import { FaClipboardCheck } from "react-icons/fa6";
-
-interface Rule{
-    nombre: string;
-    descripcion: string;
-    normativaRelacionada: string;
-    severidad: string;
-}
+import { Rule } from '@/types/Rule';
 
 export default function ConfigAudit() {
     const {CSVdata} = useCSVContext();
@@ -214,24 +209,8 @@ export default function ConfigAudit() {
                     isOpen={isOpenThird}
                 >
                     {rulesList && rulesList.length > 0 && (
-                        <div className={styles.page__normativas__list}>
-                            {rulesList.map((rule, index) => (
-                                <div key={index} className={styles.page__normativas__list__item}>
-                                    <input 
-                                        type="text" 
-                                        value={rule.nombre} 
-                                        readOnly 
-                                        className={styles.page__normativas__list__item__input}
-                                    />
-                                    <button 
-                                        onClick={() => handleRemoveRulesList(rule)}
-                                        className={styles.page__normativas__list__item__button}
-                                    >
-                                        x
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
+                        <RulesList rulesList={rulesList} deleteRule={handleRemoveRulesList}/>
+                        
                     )}
                     <ButtonToRequest
                         onClick={goToDashboard}

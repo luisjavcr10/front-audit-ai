@@ -2,17 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
-
-type LogoProps = {
-    whereUse: 'login' | 'navbar' | 'register';
-};
-
-type DimensionsType = {
-    [K in LogoProps['whereUse']]: {
-        width: number;
-        height: number;
-    };
-};
+import { LogoProps, DimensionsType } from "@/types/LogoTypes";
 
 export const Logo = ({ whereUse }: Readonly<LogoProps>) => {
     const { theme } = useTheme();

@@ -3,15 +3,7 @@ import { useState, useEffect } from 'react';
 import { loadGoogleIdentityServices, authenticateGoogle, loadGooglePickerAPI, showGooglePicker, downloadFileFromDrive } from '@/services/googleDriveService';
 import { WindowWithGoogleAPIs } from '@/types/google-api';
 import { uploadFileFromGoogleDriveToBackend } from '@/services/apiService';
-
-interface CSVRow {
-  [key: string]: string | number | boolean | null;
-}
-
-interface GoogleDriveIntegrationProps {
-  onFileLoaded: (data: CSVRow[]) => void;
-  handleLoading: (value: boolean) => void;
-}
+import { GoogleDriveIntegrationProps } from '@/types/GoogleDriveIntegrationProps';
 
 export const GoogleDriveIntegration = ({ 
   onFileLoaded, 
