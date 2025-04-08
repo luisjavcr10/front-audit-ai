@@ -1,6 +1,7 @@
 import styles from './RegulationsList.module.scss';
 import { useState, useRef, useEffect } from 'react';
 import { FiMinusCircle } from "react-icons/fi";
+import { OptionsList } from '../OptionsList';
 
 export const RegulationsList = ({
     regulationsList,
@@ -47,6 +48,7 @@ export const RegulationsList = ({
                     </button>
                 </div>
             ))}
+           
         </div> 
     )
 }

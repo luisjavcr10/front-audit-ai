@@ -1,24 +1,31 @@
 import styles from './OptionsList.module.scss';
 import { FiTrash2,FiEdit3 } from "react-icons/fi";
 
+interface Rule{
+    nombre: string;
+    descripcion: string;
+    normativaRelacionada: string;
+    severidad: string;
+}
+
 export const OptionsList = ({
-    regulation,
-    handleRemoveRegulationsList,
+    rule,
+    deleteRule,
 }: Readonly<{
-    regulation: string;
-    handleRemoveRegulationsList: (regulation: string) => void;
+    rule: Rule;
+    deleteRule: (rule: Rule) => void;
 }>) =>{
     return(
         <div className={styles.OptionsList}>
             <button 
-                onClick={() => handleRemoveRegulationsList(regulation)}
+                onClick={() => deleteRule(rule)}
                 className={styles.OptionsList__Edit}
             >
                 <FiEdit3/>
                 Edit
             </button>
             <button 
-                onClick={() => handleRemoveRegulationsList(regulation)}
+                onClick={() => deleteRule(rule)}
                 className={styles.OptionsList__Delete}
             >
                 <FiTrash2/>
