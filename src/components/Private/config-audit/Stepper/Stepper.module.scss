@@ -1,0 +1,20 @@
+.Stepper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 500px;
+    height: 5px;
+    gap: 10px;
+    &__item{
+        border-radius: 10px;
+        background-color: var(--background-table);
+    }
+
+    &__done{
+        background-color: var(--color-blue-level-3);
+    }
+
+    &__inprogress{
+        background-color: var(--background-table);
+    }
+}

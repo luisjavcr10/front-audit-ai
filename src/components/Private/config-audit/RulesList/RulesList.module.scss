@@ -19,7 +19,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
+
         &__input {
             background: transparent;
             border: none;
@@ -28,6 +28,30 @@
             width: 90%;
             outline: none;
             cursor: default;
+
+            &__editing {
+                border-bottom: 1px solid var(--primary);
+                cursor: text;
+                padding-bottom: 2px;
+            }
+        }
+
+        &__saveButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+
+            &:hover {
+                opacity: 0.9;
+            }
         }
         
         &__button {
@@ -40,13 +64,20 @@
             cursor: pointer;
             padding: 0 5px;
             
-            &:hover {
-                opacity: 0.7;;
-            }
-            
             &__icon{
                 width: 20px;
                 height: 20px;
+            }
+        }
+
+        &__buttonOptions{        
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        &__buttonCheck{        
+            &:hover {
+                color: var(--color-blue-level-3);
             }
         }
     }

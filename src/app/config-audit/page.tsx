@@ -5,22 +5,22 @@ import { useCSVContext } from '@/context/CSVContext';
 
 import { SelectToConfigAudit } from '@/components/Private/config-audit/SelectToConfigAudit';
 import { ButtonToRequest } from '@/components/Private/config-audit/ButtonToRequest';
-import { Loader } from '@/components/Shared/Loader';
 import { TriggerSection } from '@/components/Private/config-audit/TriggerSection';
 import { SectionTitleTrigger } from '@/components/Private/config-audit/SectionTitleTrigger';
+import { Stepper } from '@/components/Private/config-audit/Stepper/Stepper';
 import { DropdownContent } from '@/components/Private/config-audit/DropdownContent';
 import { RegulationsList } from '@/components/Private/config-audit/RegulationsList';
 import { RulesList } from '@/components/Private/config-audit/RulesList/RulesList';
+import { Loader } from '@/components/Shared/Loader';
 
 import { sectorOptions, typeauditOptions } from '@/constants/listConfigAudit';
-
+import { Rule } from '@/types/Rule';
 //Services
 import { getListOfRegulations, getListOfRules, getDashboard } from '@/services/apiService';
 
 import { FaBuilding } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import { FaClipboardCheck } from "react-icons/fa6";
-import { Rule } from '@/types/Rule';
 
 export default function ConfigAudit() {
     const {CSVdata} = useCSVContext();
@@ -50,6 +50,7 @@ export default function ConfigAudit() {
     const toggleDropdownThird = () => {
         setIsOpenThird(!isOpenThird);
     };
+    const [isDoneThird, setIsDoneThird] = useState(false);
     const [isBlockThird, setIsBlockThird] = useState(true);
 
     //Regulations Section
@@ -103,6 +104,16 @@ export default function ConfigAudit() {
         setRulesList((prev) => prev.filter((r) => r.nombre !== rule.nombre));
     }
 
+    const handleEditRuleName = (oldRule: Rule, newName: string) => {
+        setRulesList((prev) => 
+            prev.map((r) => 
+                r.nombre === oldRule.nombre 
+                    ? {...r, nombre: newName} 
+                    : r
+            )
+        );
+    }
+
     //Go to dashboard
     const goToDashboard = async () => {
         try {
@@ -113,13 +124,12 @@ export default function ConfigAudit() {
                 rules: rulesList.map(rule => rule.nombre),
                 CSVdata: CSVdata
             }
-            console.log(body);
             setIsLoading(true);
+            setIsDoneThird(true);
             const response = await getDashboard(body);
             setIsLoading(false);
             sessionStorage.setItem('tempDashboardData', JSON.stringify(response.auditResponseDtoList));
             window.location.href = '/dashboard';
-            console.log(response);
         } catch (error) {
             console.error('Error executing dashboard analysis:', error);
             setIsLoading(false);
@@ -129,6 +139,7 @@ export default function ConfigAudit() {
     return (
         <>
             {isLoading && <Loader/>}
+            <Stepper isDoneFirst={isDoneFirst} isDoneSecond={isDoneSecond} isDoneThird={isDoneThird}/>
             <div className={styles.DropdownMenu}>
                 <TriggerSection 
                     toggleDropdown={toggleDropdownFirst}
@@ -209,7 +220,11 @@ export default function ConfigAudit() {
                     isOpen={isOpenThird}
                 >
                     {rulesList && rulesList.length > 0 && (
-                        <RulesList rulesList={rulesList} deleteRule={handleRemoveRulesList}/>
+                        <RulesList 
+                            rulesList={rulesList} 
+                            deleteRule={handleRemoveRulesList}
+                            editRule={handleEditRuleName}
+                        />
                         
                     )}
                     <ButtonToRequest
