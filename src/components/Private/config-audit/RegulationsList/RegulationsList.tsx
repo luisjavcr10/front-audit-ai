@@ -1,7 +1,6 @@
 import styles from './RegulationsList.module.scss';
 import { useState, useRef, useEffect } from 'react';
-import { HiDotsHorizontal } from "react-icons/hi";
-import { FiTrash2,FiEdit3 } from "react-icons/fi";
+import { FiMinusCircle } from "react-icons/fi";
 
 export const RegulationsList = ({
     regulationsList,
@@ -41,29 +40,11 @@ export const RegulationsList = ({
                         className={styles.List__item__input}
                     />
                     <button 
-                        onClick={() => toggleMenu(index)}
+                        onClick={() => handleRemoveRegulationsList(regulation)}
                         className={styles.List__item__button}
                     >
-                        <HiDotsHorizontal />
+                        <FiMinusCircle className={styles.List__item__button__icon}/>
                     </button>
-                    {activeMenuIndex === index && (
-                        <div className={styles.ToggleMenu}>
-                            <button 
-                                onClick={() => handleRemoveRegulationsList(regulation)}
-                                className={styles.ToggleMenu__Edit}
-                            >
-                                <FiEdit3/>
-                                Edit
-                            </button>
-                            <button 
-                                onClick={() => handleRemoveRegulationsList(regulation)}
-                                className={styles.ToggleMenu__Delete}
-                            >
-                                <FiTrash2/>
-                                Delete
-                            </button>
-                        </div>
-                    )}
                 </div>
             ))}
         </div> 

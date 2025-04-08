@@ -31,6 +31,8 @@
         }
         
         &__button {
+            display: flex;
+            align-items: center;
             background: transparent;
             border: none;
             color: var(--text);
@@ -39,7 +41,12 @@
             padding: 0 5px;
             
             &:hover {
-                color: var(--error);
+                color: #BF3131;
+            }
+            
+            &__icon{
+                width: 20px;
+                height: 20px;
             }
         }
     }
