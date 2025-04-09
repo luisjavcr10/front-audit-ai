@@ -54,7 +54,7 @@ export const FileUploader = () =>{
 
     const goToConfigAudit = () => {
         if(!CSVdata){
-            setError("Please load a file");
+            setError("Please upload a file");
             return;
         }
         if(!selectedModel){
