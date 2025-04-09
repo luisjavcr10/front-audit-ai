@@ -12,6 +12,7 @@ export const ThemeButton = () =>{
             className={styles.ThemeButton}
         >
             {theme === 'light'? <MdDarkMode className={styles.ThemeButton__Icon}/> : <MdLightMode className={styles.ThemeButton__Icon}/>}
+            
         </button>
     );
 }
