@@ -13,12 +13,11 @@ import styles from './FileUploader.module.scss';
 import { useCSVContext } from '@/context/CSVContext';
   
 export const FileUploader = () =>{
+    const {CSVdata,toggleCSV} = useCSVContext();
+
     const [selectedModel, setSelectedModel] = useState<string | null>(null);
-    const [selectedType, setSelectedType] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-
-    const {toggleCSV} = useCSVContext();
 
     const handleIsLoading = (value: boolean) => {
         setIsLoading(value);
@@ -27,10 +26,6 @@ export const FileUploader = () =>{
     const handleModelSelect = (model: string) => {
         setSelectedModel(model);
     };
-
-    const handleTypeSelect = (type: string) => {
-        setSelectedType(type);
-    }
 
     const handleUploadLocalFile = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -46,7 +41,8 @@ export const FileUploader = () =>{
             toggleCSV(data);
         } catch (error) {
             console.error("Error:", error);
-            alert("Hubo un problema al subir el archivo.");
+            setError("Error al cargar el archivo.");
+            setIsLoading(false);
         }
     };
 
@@ -56,6 +52,18 @@ export const FileUploader = () =>{
         }, handleLoading: handleIsLoading
     });
 
+    const goToConfigAudit = () => {
+        if(!selectedModel){
+            setError("Please select an AI Model");
+            return;
+        }
+        if(!CSVdata){
+            setError("Please load a file");
+            return;
+        }
+        window.location.href = '/config-audit';
+    };
+
     return(
         <>
             <UploadFileInput onChangeLocal={handleUploadLocalFile} googleDrive={handleUploadGoogleDriveFile}/>
@@ -64,9 +72,8 @@ export const FileUploader = () =>{
                 <Datatable/>  
                 <ButtonsSection 
                     model={selectedModel}
-                    type={selectedType}
                     handleModel={handleModelSelect} 
-                    handleType={handleTypeSelect}
+                    handleRedirect={goToConfigAudit}
                 />        
             </div> 
 
