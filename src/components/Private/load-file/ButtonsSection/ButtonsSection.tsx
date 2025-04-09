@@ -25,7 +25,7 @@ export const ButtonsSection = ({
                 <ModelIcon/>
             </FeatureButton>  
             <button onClick={handleRedirect} className={styles.ButtonsSection__StartButton}>
-                Audit with AI
+                Set up your audit 
             </button>
         </div>   
     )
