@@ -11,7 +11,7 @@ import { FaUser } from "react-icons/fa";
 
 const itemsToAnyPage=[
     { icon: <GoHomeFill className={styles.ToggleMenu__Item__Icon}/>, title: 'Home', href: '/' },
-    { icon: <IoDownload className={styles.ToggleMenu__Item__Icon}/>, title: 'LoadFile', href: '/load-file' },
+    { icon: <IoDownload className={styles.ToggleMenu__Item__Icon}/>, title: 'Upload File', href: '/upload-file' },
     { icon: <FaUser className={styles.ToggleMenu__Item__Icon}/>, title: 'Sing In', href: '/login' },
 ];
 

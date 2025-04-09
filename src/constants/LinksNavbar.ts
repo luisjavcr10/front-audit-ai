@@ -1,4 +1,4 @@
 export const links = [
     { path: '/', label: 'Home' },
-    { path: '/load-file', label: 'LoadFile' }
+    { path: '/upload-file', label: 'Upload File' }
   ];

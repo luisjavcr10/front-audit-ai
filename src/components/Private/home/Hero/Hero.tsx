@@ -5,7 +5,7 @@ const enunciados = {
     title:'Optimize your audit with AI',
     description:'Automate data analysis with artificial inteligence. Our platform reviews files in seconds, accurately detecting inconsistencues and risks. Optimizate your audits and make confident decisions with AuditAI.',
     textButton:'Start Audit',
-    href:'/load-file'
+    href:'/upload-file'
 }
 
 export const Hero = () => {
