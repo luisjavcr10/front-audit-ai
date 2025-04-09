@@ -1,4 +1,8 @@
 .ThemeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     background-color: transparent;
     border: none;
     transition-duration: 500ms;
@@ -14,6 +18,5 @@
         width: 24px;
         height: 24px; 
     }
-
     
 }
