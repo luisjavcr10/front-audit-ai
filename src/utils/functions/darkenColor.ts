@@ -1,4 +1,4 @@
-// @ts-ignore
+//@ts-expect-error
 import chroma from 'chroma-js';
 
 export const darkenColor = (hex: string, percent: number): string => { 
