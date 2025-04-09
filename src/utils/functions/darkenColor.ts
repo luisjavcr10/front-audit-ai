@@ -1,4 +1,4 @@
-//@ts-expect-error
+// @ts-expect-error: chroma typing issues (adjust as needed)
 import chroma from 'chroma-js';
 
 export const darkenColor = (hex: string, percent: number): string => { 
