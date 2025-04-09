@@ -4,8 +4,8 @@ import { aiModels } from '@/constants/aiModels';
 import { typeAuditList } from '@/constants/typeAuditList';
 
 import { FeatureButton } from "../FeatureButton"
-import { ModelIcon } from "@/utils/ModelIcon"
-import { TypeIcon } from "@/utils/TypeIcon"
+import { ModelIcon } from "@/utils/icons/ModelIcon"
+import { TypeIcon } from "@/utils/icons/TypeIcon"
 import Link from 'next/link';
 
 export const ButtonsSection = ({

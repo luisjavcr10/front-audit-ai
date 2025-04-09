@@ -13,14 +13,17 @@ import { RegulationsList } from '@/components/Private/config-audit/RegulationsLi
 import { RulesList } from '@/components/Private/config-audit/RulesList/RulesList';
 import { Loader } from '@/components/Shared/Loader';
 
+import { addColorsToGrafics } from '@/utils/functions/addColorsToGrafics';
 import { sectorOptions, typeauditOptions } from '@/constants/listConfigAudit';
 import { Rule } from '@/types/Rule';
+
 //Services
 import { getListOfRegulations, getListOfRules, getDashboard } from '@/services/apiService';
 
 import { FaBuilding } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import { FaClipboardCheck } from "react-icons/fa6";
+
 
 export default function ConfigAudit() {
     const {CSVdata} = useCSVContext();
@@ -127,15 +130,16 @@ export default function ConfigAudit() {
             setIsLoading(true);
             setIsDoneThird(true);
             const response = await getDashboard(body);
+            const grafics= addColorsToGrafics(response.auditResponseDtoList);
             setIsLoading(false);
-            sessionStorage.setItem('tempDashboardData', JSON.stringify(response.auditResponseDtoList));
-            window.location.href = '/dashboard';
+            sessionStorage.setItem('tempDashboardData', JSON.stringify(grafics));
+            window.location.href = '/dashboard';    
         } catch (error) {
             console.error('Error executing dashboard analysis:', error);
             setIsLoading(false);
         }
     }
-    
+
     return (
         <>
             {isLoading && <Loader/>}
