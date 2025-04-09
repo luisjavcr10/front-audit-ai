@@ -53,12 +53,12 @@ export const FileUploader = () =>{
     });
 
     const goToConfigAudit = () => {
-        if(!selectedModel){
-            setError("Please select an AI Model");
-            return;
-        }
         if(!CSVdata){
             setError("Please load a file");
+            return;
+        }
+        if(!selectedModel){
+            setError("Please select an AI Model");
             return;
         }
         window.location.href = '/config-audit';
