@@ -1,5 +1,5 @@
 import styles from './page.module.scss';
-import { FileUploader } from '@/components/Private/load-file/FileUploader';
+import { FileUploader } from '@/components/Private/upload-file/FileUploader';
 
 const pageContent = {
     title: "AuditAI - Smart Auditing with AI",

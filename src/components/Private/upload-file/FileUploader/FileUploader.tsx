@@ -37,11 +37,30 @@ export const FileUploader = () =>{
         try {
             setIsLoading(true);
             const data = await uploadFileFromLocalToBackend(file);
+            
             setIsLoading(false);
             toggleCSV(data);
         } catch (error) {
             console.error("Error:", error);
             setError("Error al cargar el archivo.");
+            setIsLoading(false);
+        }
+    };
+
+    const handleDataDefault = async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+            const response = await fetch('/CsvDataDefault/data.json');
+            if (!response.ok) {
+                throw new Error('No se pudo cargar el archivo de datos por defecto.');
+            }
+            const data = await response.json();
+            toggleCSV(data);
+        } catch (error) {
+            console.error('Error:', error);
+            setError('Error al cargar el archivo de datos por defecto.');
+        } finally {
             setIsLoading(false);
         }
     };
@@ -67,6 +86,8 @@ export const FileUploader = () =>{
     return(
         <>
             <UploadFileInput onChangeLocal={handleUploadLocalFile} googleDrive={handleUploadGoogleDriveFile}/>
+
+            <button className={styles.FileUploader__DefaultData} onClick={handleDataDefault}>Cargar datos por defecto</button>
             
             <div className={styles.FileUploader}>
                 <Datatable/>  
