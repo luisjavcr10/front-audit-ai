@@ -45,4 +45,20 @@
         border-radius: 16px;
         box-shadow: 0 0 4px 0 var(--shadow);
     }
+
+    &__DefaultData{
+        all: unset;
+        background-color: var(--color-blue-level-2);
+        color: #FFFFFF;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 400;
+        &:hover{
+            scale:1.02;
+            background-color: var(--color-blue-level-3);
+            box-shadow: 0 0 10px 1px var(--color-blue-level-2);
+            transition-duration: 2s;
+        }
+    }
 } 
