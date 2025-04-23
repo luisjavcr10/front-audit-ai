@@ -2,7 +2,6 @@ import styles from './FormRegister.module.scss';
 
 import { InputForm } from "@/components/Shared/InputForm";
 import { ButtonForm } from '@/components/Shared/ButtonForm';
-
 import { emailForm, passwordForm, repeatPasswordForm } from '@/constants/formData';
 
 export const FormRegister = () =>{
@@ -17,9 +16,9 @@ export const FormRegister = () =>{
                         Repeat password does not match
                     </p>
                 </InputForm> 
+                <ButtonForm text='Register' type='local' />
             </form>
-            {/** Cuando este listo el login, colocar el boton dentro del form */}
-            <ButtonForm text='Register' type='local' />
+            
         </>
         
     )

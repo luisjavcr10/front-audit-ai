@@ -1,0 +1,33 @@
+.ButtonsSection{
+    width: 100%;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items:center;
+    gap: 20px;
+    @media screen and (min-width: 768px)  {
+        flex-direction: row;
+        gap: 0;
+    }
+
+    &__FeatureButtons{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+
+    &__StartButton{
+        padding: 10px 30px;
+        font-size: 12px;
+        font-weight: 400;
+        border-radius: 16px;
+        box-shadow: 0 0 4px 0 var(--shadow);
+        cursor: pointer;
+        &:hover{
+            background-color: var(--color-blue-level-2);
+            color: #FFFFFF;
+        }
+    }
+}
