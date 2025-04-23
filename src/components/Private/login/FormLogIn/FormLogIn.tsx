@@ -8,10 +8,11 @@ import { Loader } from '@/components/Shared/Loader';
 
 import { emailForm, passwordForm } from '@/constants/formData';
 
-import { login } from '@/services/apiService';
+import { useAuth } from '@/context/AuthContext';
 
 export const FormLogIn = () =>{
     const [loading, setLoading] = useState(false);
+    const {handleLogin, isAuthenticated} = useAuth();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
@@ -19,9 +20,13 @@ export const FormLogIn = () =>{
         const email = formData.get('email') as string;
         const password = formData.get('password') as string;
         setLoading(true);
-        const token = await login({username: email, password: password});
+        await handleLogin({username: email, password: password});
         setLoading(false);
-        console.log(token)
+        if(isAuthenticated){
+            window.location.href = '/upload-file';
+            return null;
+        }
+        
     }
 
     return(

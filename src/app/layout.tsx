@@ -3,6 +3,7 @@ import { Be_Vietnam_Pro } from "next/font/google";
 import "@/styles/main.scss";
 import { Footer } from "@/components/Shared/Footer";
 import { Navbar } from "@/components/Shared/Navbar";
+import { AuthProvider } from "@/context/AuthContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { CSVProvider } from "@/context/CSVContext";
 
@@ -26,14 +27,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={beVietmanPro.className}>
         <ThemeProvider>
-          <CSVProvider>
+        <AuthProvider>
+        <CSVProvider>
           {/** Navbar */}
           <Navbar/>
           {/** Children */}
           {children}
           {/** Footer */}
           <Footer/>
-          </CSVProvider>
+        </CSVProvider>
+        </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
