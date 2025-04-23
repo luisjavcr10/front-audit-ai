@@ -5,7 +5,7 @@ export const InputForm = ({type, children}: Readonly<{type:InputFormProps; child
     return(
         <div className={styles.InputForm}>
             <label>{type.title}</label>
-            <input type={type.feature} name={type.feature} id={type.feature} />
+            <input type={type.feature} name={type.name} id={type.name} />
             {children}
         </div>
     )
