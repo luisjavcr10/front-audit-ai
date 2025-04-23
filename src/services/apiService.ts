@@ -146,3 +146,48 @@ export const getDashboard = async (
     return {auditResponseDtoList:[]};  
   }
 };
+
+interface UserBody {
+  username: string;
+  password: string;
+}
+
+interface LoginResponse {
+  token: string;
+}
+
+export const register = async (
+  user: UserBody
+): Promise<void> =>{
+  try {
+    const response = await fetch(`${API_BASE_URL}/auth/register`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user),
+    });
+    await response.json();
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+export const login = async (
+  user: UserBody
+): Promise<LoginResponse> =>{
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    return {token:""};
+  }
+}
