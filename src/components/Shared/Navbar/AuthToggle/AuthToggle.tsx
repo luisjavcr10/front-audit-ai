@@ -7,12 +7,12 @@ import { IoLogOut } from "react-icons/io5";
 
 export const AuthToggle = () =>{
     const { handleLogout } = useAuth();
-    const [open, setOpen] = useState<Boolean>(false);
-    const menuRef = useRef(null);
+    const [open, setOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (menuRef.current && !(menuRef.current as any).contains(event.target)) {
+            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
                 setOpen(false);
             }
         };
