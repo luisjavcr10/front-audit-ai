@@ -1,0 +1,57 @@
+.AuthToggle{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition-duration: 500ms;
+    color: var(--color-blue-level-2);
+
+    &__Icon {
+        width: 24px;
+        height: 24px; 
+        color: var(--color-blue-level-2);
+        &:hover{
+            color: var(--color-blue-level-3);
+        }
+    }
+
+    &__ToggleMenu {
+        position:absolute;
+        display: flex;
+        flex-direction: column;
+        top: 150%;
+        right:0;
+        z-index: 1000;
+        background-color: var(--background-navbar);
+        padding: 5px;
+        margin-top: 5px;
+        border-radius: 5px;
+        box-shadow: 0 0 2px 0 var(--shadow);
+
+        &__Item{
+            display: flex;
+            justify-content: flex-start;
+            align-items:center;
+            border: none;
+            padding: 10px 20px;
+            background-color: transparent;
+            gap: 5px;
+            color: red;
+            font-size: 16px;
+            font-family: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover{
+                background-color: rgba(255, 0, 0, 0.1);
+            }
+
+            &__Icon{
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+}

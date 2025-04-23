@@ -20,9 +20,8 @@ export const Navbar = () =>{
             </div>
             
             {/**Seccion de botones para cambio de tema o idioma y login */}
-            <div className={styles.Navbar__RightSection}>
-                <Buttons/>
-            </div>
+            <Buttons/>
+
 
             {/**Menu para dispositivos mobiles */}
             <ToggleMenu/>
