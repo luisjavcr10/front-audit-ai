@@ -2,15 +2,15 @@ import styles from '../Navbar.module.scss';
 import { ThemeButton } from '../ThemeButton';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
-import { FaUserCircle } from "react-icons/fa";
+import { AuthToggle } from '../AuthToggle';
 
 export const Buttons = () =>{
     const {isAuthenticated} = useAuth();
     return(
-        <>
+        <div className={styles.Navbar__RightSection}>
             <ThemeButton/>
             {isAuthenticated ? 
-            <FaUserCircle className={styles.Navbar__RightSection__Icon}/>
+            <AuthToggle/>
             :
             <>
                 <Link href='/login' className={styles.Navbar__RightSection__Access}>Access</Link>
@@ -18,6 +18,6 @@ export const Buttons = () =>{
             </>
             }
             
-        </>
+        </div>
     );
 }
