@@ -17,12 +17,16 @@
     input[type="file"]{
         display: none;
     }
+
+    &__Hide{
+        pointer-events: none;
+        opacity: 0.5;
+    }
     
     .custom-file-upload {
         //Estilos para simular un boton deshabilitado
         //IMPORTANTE: Habilitar el boton cuando la funcion de login este lista
-        pointer-events: none;
-        opacity: 0.5;
+        
 
         background-color: var(--color-blue-level-2);
         color: #FFFFFF;
@@ -59,8 +63,7 @@
         &__DriveButton{
             //Estilos para simular un boton deshabilitado
             //IMPORTANTE: Habilitar el boton cuando la funcion de login este lista
-            pointer-events: none;
-            opacity: 0.5;
+        
 
             background-color: var(--color-blue-level-2);
             border: none;
