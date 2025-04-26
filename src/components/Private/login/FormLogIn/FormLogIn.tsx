@@ -22,11 +22,6 @@ export const FormLogIn = () =>{
         setLoading(true);
         await handleLogin({username: email, password: password});
         setLoading(false);
-        if(isAuthenticated){
-            window.location.href = '/upload-file';
-            return null;
-        }
-        
     }
 
     return(

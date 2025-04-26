@@ -48,6 +48,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         setIsAuthenticated(true);
         setToken(response.token);
         localStorage.setItem('token', response.token);
+        window.location.href = '/upload-file';
         return response;
     }
 
