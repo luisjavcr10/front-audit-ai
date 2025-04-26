@@ -33,11 +33,15 @@ export const Loader = () => {
         </div>
       </div>
     </StyledWrapper>
+    <div className={styles.Loader__Text}>
+      The first time may take a few minutes
+    </div>
     </div>
   );
 }
 
 const StyledWrapper = styled.div`
+
   .boxes {
     --size: 32px;
     --duration: 800ms;
