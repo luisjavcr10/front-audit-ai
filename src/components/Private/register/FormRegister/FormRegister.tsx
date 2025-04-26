@@ -18,7 +18,7 @@ export const FormRegister = () =>{
         const formData = new FormData(e.currentTarget);
         const email = formData.get('email') as string;
         const password = formData.get('password') as string;
-        const repeatPassword = formData.get('repeatpassword') as string;
+        //const repeatPassword = formData.get('repeatpassword') as string;
     
         //if (password !== repeatPassword) {
         //    alert("Las contraseñas no coinciden");

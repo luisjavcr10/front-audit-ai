@@ -12,7 +12,7 @@ import { useAuth } from '@/context/AuthContext';
 
 export const FormLogIn = () =>{
     const [loading, setLoading] = useState(false);
-    const {handleLogin, isAuthenticated} = useAuth();
+    const {handleLogin} = useAuth();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
