@@ -12,7 +12,7 @@ import { useAuth } from '@/context/AuthContext';
 
 export const FormLogIn = () =>{
     const [loading, setLoading] = useState(false);
-    const {handleLogin, isAuthenticated} = useAuth();
+    const {handleLogin} = useAuth();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
@@ -22,11 +22,6 @@ export const FormLogIn = () =>{
         setLoading(true);
         await handleLogin({username: email, password: password});
         setLoading(false);
-        if(isAuthenticated){
-            window.location.href = '/upload-file';
-            return null;
-        }
-        
     }
 
     return(

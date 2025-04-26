@@ -11,9 +11,11 @@ import { UploadFileInput } from '../UploadFileInput';
 import styles from './FileUploader.module.scss';
 
 import { useCSVContext } from '@/context/CSVContext';
+import { useAuth } from '@/context/AuthContext';
   
 export const FileUploader = () =>{
     const {CSVdata,toggleCSV} = useCSVContext();
+    const {isAuthenticated} = useAuth();
 
     const [selectedModel, setSelectedModel] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -87,7 +89,10 @@ export const FileUploader = () =>{
         <>
             <UploadFileInput onChangeLocal={handleUploadLocalFile} googleDrive={handleUploadGoogleDriveFile}/>
 
-            <button className={styles.FileUploader__DefaultData} onClick={handleDataDefault}>Cargar datos por defecto</button>
+            {!isAuthenticated && <button 
+                className={styles.FileUploader__DefaultData}
+                onClick={handleDataDefault}>Cargar datos por defecto
+            </button>}
             
             <div className={styles.FileUploader}>
                 <Datatable/>  

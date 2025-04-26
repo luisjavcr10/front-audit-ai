@@ -15,7 +15,7 @@ type AuthContextType = {
     isAuthenticated: boolean;
     token: string | null;
     loading: boolean;
-    handleLogin:(user: UserBody) => Promise<LoginResponse>;
+    handleLogin:(user: UserBody) => Promise<LoginResponse | undefined>;
     handleLogout: () => void;
 }
 
@@ -44,12 +44,20 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
     }, []);
 
     const handleLogin = async (user: UserBody) => {
-        const response = await login(user);
-        setIsAuthenticated(true);
-        setToken(response.token);
-        localStorage.setItem('token', response.token);
-        return response;
-    }
+        try {
+            const response = await login(user);
+            if (response.token) {  // ✅ Solo redirige si hay token
+                setIsAuthenticated(true);
+                setToken(response.token);
+                localStorage.setItem('token', response.token);
+                window.location.href = '/upload-file';  // ← Redirección aquí
+                return response;
+            }
+        } catch (error) {
+            console.error("Login failed:", error);
+            return { token: '' };
+        }
+    };
 
     const handleLogout = () => {
         setToken(null);
