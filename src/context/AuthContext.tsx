@@ -63,6 +63,8 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         setToken(null);
         setIsAuthenticated(false);
         localStorage.removeItem('token');
+        sessionStorage.removeItem('CSVdata');
+        window.location.href = '/'; 
     }
 
     const value: AuthContextType = {
