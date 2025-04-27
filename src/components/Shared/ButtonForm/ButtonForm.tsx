@@ -6,9 +6,10 @@ import { ErrorToast } from '../ErrorToast';
 
 export const ButtonForm = ({children, text, type}: Readonly<{children?:React.ReactNode; text: string; type:string}>) => {
     const [error, setError] = useState<string | null>(null);
-    //const handleClick = () => {
-    //        setError('Unavailable now!');
-    //};
+    const handleClick = () => {
+            setError('Unavailable now!');
+    };
+
     return(
         <>
         {error && <ErrorToast errorMessage={error} onClose={()=>setError(null)} />}
@@ -16,6 +17,7 @@ export const ButtonForm = ({children, text, type}: Readonly<{children?:React.Rea
             className={styles.ButtonForm} 
             type={`${type === 'local' ? 'submit' : 'button'}`}  
             style={type === 'local' ? {marginTop:'20px'} : {}}
+            onClick={type === 'local' ? undefined : handleClick}
         >
             {children}
             {text}
