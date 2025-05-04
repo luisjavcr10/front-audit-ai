@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "app-auditai-backend-01-hshxcng8hjbxe7dg.centralus-01.azurewebsites.net";
 import { CSVRow } from "@/types/CSVRow";
 import { BodyToGetDashboard } from "@/types/ApiTypes";
 import { BodyToGetListOfRules } from "@/types/ApiTypes";
