@@ -1,7 +1,6 @@
 "use client"
 import styles from './page.module.scss';
 import { FileUploader } from '@/components/Private/upload-file/FileUploader';
-import { translateText } from '@/services/apiTranslator';
 
 const pageContent = {
     title: "AuditAI - Smart Auditing with AI",
