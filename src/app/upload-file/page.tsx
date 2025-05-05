@@ -14,7 +14,6 @@ export default function LoadFile() {
         <main className={styles.page}>
             <h1 className={styles.page__Title}>{pageContent.title}</h1>
             <p className={styles.page__Subtitle}>{pageContent.subtitle}</p>
-            <button onClick={()=>translateText("Hello world", "es").then(console.log)}>traduce</button>
             <FileUploader/>
         </main>
     );

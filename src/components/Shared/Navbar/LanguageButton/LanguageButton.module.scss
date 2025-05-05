@@ -1,0 +1,39 @@
+.LanguageButton{
+    position: relative;
+
+    &__Button{
+        all: unset;
+        color: var(--color-blue-level-2);
+        &:hover{
+            scale: 1.1;
+            transition-duration: 1s;
+            color: var(--color-blue-level-3);
+        }    
+
+        &__Icon{
+            width: 24px;
+            height: 24px; 
+        }
+    }
+}
+
+.Toggle{
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    top: 150%;
+    right:0;
+    z-index: 1000;
+    background-color: var(--background-navbar);
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 0 var(--shadow);
+    gap: 10px;
+    &__Item{
+        cursor: pointer;
+        &:hover{
+            color: var(--color-blue-level-2);
+        }
+    }
+}
