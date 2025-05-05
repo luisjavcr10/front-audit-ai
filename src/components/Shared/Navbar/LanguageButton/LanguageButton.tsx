@@ -39,6 +39,7 @@ export const LanguageButton = () => {
                     <div className={styles.Toggle__Item} onClick={() => { translatePage('fr'); setShowMenu(false); }} >Français</div>
                     <div className={styles.Toggle__Item} onClick={() => { translatePage('it'); setShowMenu(false); }} >Italiano</div>
                     <div className={styles.Toggle__Item} onClick={() => { translatePage('pt'); setShowMenu(false); }} >Português</div>
+                    <div className={styles.Toggle__Item} onClick={() => { translatePage('ko'); setShowMenu(false); }} >한국인</div>
                 </div>
             )}
         </div>
