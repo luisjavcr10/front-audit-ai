@@ -1,3 +1,4 @@
+"use client"
 import styles from './page.module.scss';
 import { FileUploader } from '@/components/Private/upload-file/FileUploader';
 
