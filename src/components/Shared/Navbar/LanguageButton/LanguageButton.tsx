@@ -3,8 +3,21 @@ import styles from './LanguageButton.module.scss';
 import { MdOutlineTranslate } from "react-icons/md";
 import { useState } from "react";
 
+interface Language {
+    code: string;
+    name: string;
+}
+
 export const LanguageButton = () => {
     const [showMenu, setShowMenu] = useState(false);
+    
+    const languages: Language[] = [
+        { code: 'es', name: 'Español' },
+        { code: 'fr', name: 'Français' },
+        { code: 'it', name: 'Italiano' },
+        { code: 'pt', name: 'Português' },
+        { code: 'ko', name: '한국인' }
+    ];
     async function translatePage(targetLanguage: string) {
         const textNodes: Node[] = [];
     
@@ -35,11 +48,18 @@ export const LanguageButton = () => {
             
             {showMenu && (
                 <div className={styles.Toggle}>
-                    <div className={styles.Toggle__Item} onClick={() => { translatePage('es'); setShowMenu(false); }} >Español</div>
-                    <div className={styles.Toggle__Item} onClick={() => { translatePage('fr'); setShowMenu(false); }} >Français</div>
-                    <div className={styles.Toggle__Item} onClick={() => { translatePage('it'); setShowMenu(false); }} >Italiano</div>
-                    <div className={styles.Toggle__Item} onClick={() => { translatePage('pt'); setShowMenu(false); }} >Português</div>
-                    <div className={styles.Toggle__Item} onClick={() => { translatePage('ko'); setShowMenu(false); }} >한국인</div>
+                    {languages.map((language, index) => (
+                        <div 
+                            key={index} 
+                            className={styles.Toggle__Item} 
+                            onClick={() => { 
+                                translatePage(language.code); 
+                                setShowMenu(false); 
+                            }}
+                        >
+                            {language.name}
+                        </div>
+                    ))}
                 </div>
             )}
         </div>

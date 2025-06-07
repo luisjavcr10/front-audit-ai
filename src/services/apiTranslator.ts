@@ -1,3 +1,4 @@
+const key_translator = "1CXeNzicnRMFzutJ5BSHKDF5CmQwS0uwxQK3HtfOi0XK2jxrvlwZJQQJ99BEACYeBjFXJ3w3AAAbACOGHICJ"
 interface TranslationResult {
     translations: Array<{ text: string; to: string }>;
 }
@@ -5,7 +6,7 @@ interface TranslationResult {
 export async function translateText(text: string, targetLanguage: string): Promise<string> {
     const endpoint = "https://api.cognitive.microsofttranslator.com/";
     const route = `/translate?api-version=3.0&to=${targetLanguage}`;
-    const subscriptionKey = "1CXeNzicnRMFzutJ5BSHKDF5CmQwS0uwxQK3HtfOi0XK2jxrvlwZJQQJ99BEACYeBjFXJ3w3AAAbACOGHICJ";
+    const subscriptionKey = key_translator;
 
     try {
         const response = await fetch(`${endpoint}${route}`, {
