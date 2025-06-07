@@ -1,3 +1,16 @@
+# AuditAI Frontend
+
+AuditAI es una aplicación web diseñada para facilitar la auditoría y análisis inteligente de datos mediante inteligencia artificial. Este repositorio contiene el frontend del proyecto, desarrollado con Next.js, proporcionando una interfaz moderna, intuitiva y eficiente para la gestión y visualización de auditorías.
+
+## Características principales
+- Interfaz de usuario intuitiva y responsiva
+- Integración con modelos de IA para análisis automatizado
+- Soporte para carga y visualización de archivos CSV
+- Panel de control para gestión de auditorías
+- Integración con servicios externos como Google Drive
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
