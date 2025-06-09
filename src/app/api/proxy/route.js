@@ -17,6 +17,7 @@ export async function GET(request) {
       },
     });
   } catch (error) {
+    console.error(error);
     return new Response(JSON.stringify({ error: 'Error al conectar con el backend' }), {
       status: 500,
       headers: {
@@ -48,6 +49,7 @@ export async function POST(request) {
       },
     });
   } catch (error) {
+    console.error(error);
     return new Response(JSON.stringify({ error: 'Error al conectar con el backend' }), {
       status: 500,
       headers: {
