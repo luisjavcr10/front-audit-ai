@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { AuthToggle } from '../AuthToggle';
 import { LanguageButton } from '../LanguageButton';
+import { AwsButton } from "../AwsButton/AwsButton";
 
 export const Buttons = () =>{
     const {isAuthenticated} = useAuth();
     return(
         <div className={styles.Navbar__RightSection}>
+            <AwsButton />
             <LanguageButton />
             <ThemeButton/>
             {isAuthenticated ? 
