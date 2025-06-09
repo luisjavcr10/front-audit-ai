@@ -7,7 +7,7 @@ import {
   
   //AZURE
   const key_translator =
-    process.env.AZURE_ACCESS_KEY! 
+    process.env.NEXT_PUBLIC_AZURE_ACCESS_KEY! 
   interface TranslationResult {
     translations: Array<{ text: string; to: string }>;
   }
