@@ -1,7 +1,7 @@
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const path = searchParams.get('path');
-  const backendUrl = `http://3.141.25.111:8080${path}`; // Reemplaza con tu URL HTTP
+  const backendUrl = `http://3.15.226.145:8080${path}`; // Reemplaza con tu URL HTTP
 
   try {
     const response = await fetch(backendUrl, {
@@ -31,7 +31,7 @@ export async function POST(request) {
   
   const { searchParams } = new URL(request.url);
   const path = searchParams.get('path');
-  const backendUrl = `http://3.141.25.111:8080${path}`;
+  const backendUrl = `http://3.15.226.145:8080${path}`;
   const body = await request.json();
 
   try {
