@@ -18,7 +18,7 @@ export const uploadFileFromGoogleDriveToBackend = async (
 
   try {
     console.log("FormData being sent:", formData);
-    const res = await fetch(`${API_BASE_URL}/convertToJson`, {
+    const res = await fetch(`/api/proxy?path=/convertToJson`, {
       method: "POST",
       body: formData,
     });
@@ -50,7 +50,7 @@ export const uploadFileFromLocalToBackend = async (
 
   try {
     console.log("FormData being sent:", formData);
-    const res = await fetch(`${API_BASE_URL}/convertToJson`, {
+    const res = await fetch(`/api/proxy?path=/convertToJson`, {
       method: "POST",
       body: formData,
     });
@@ -72,7 +72,7 @@ export const getListOfRegulations = async (
   body: BodyToGetRegulations
 ): Promise<string[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/recommendations`, {
+    const response = await fetch(`/api/proxy?path=/recommendations`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ export const getListOfRules = async (
   body: BodyToGetListOfRules
 ): Promise<Rule[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/getRules`, {
+    const response = await fetch(`/api/proxy?path=/getRules`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -125,7 +125,7 @@ export const getDashboard = async (
   body: BodyToGetDashboard
 ): Promise<DataResponseDashboard> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/analysis`, {
+    const response = await fetch(`/api/proxy?path=/analysis`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -160,7 +160,7 @@ export const register = async (
   user: UserBody
 ): Promise<void> =>{
   try {
-    const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+    const response = await fetch(`/api/proxy?path=/api/auth/register`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -177,7 +177,7 @@ export const login = async (
   user: UserBody
 ): Promise<LoginResponse> =>{
   try {
-    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+    const response = await fetch(`/api/proxy?path=/api/auth/login`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
