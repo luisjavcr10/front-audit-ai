@@ -177,7 +177,7 @@ export const login = async (
   user: UserBody
 ): Promise<LoginResponse> =>{
   try {
-    const response = await fetch(`/api/proxy?path=/api/auth/login`, {
+    const response = await fetch(`https://aws.d2hdu1jqpbdgo.amplifyapp.com/api/proxy?path=/api/auth/login`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
