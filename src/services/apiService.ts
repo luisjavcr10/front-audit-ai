@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://app-auditai-backend-01-hshxcng8hjbxe7dg.centralus-01.azurewebsites.net/";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://3.141.25.111:8080/";
 import { CSVRow } from "@/types/CSVRow";
 import { BodyToGetDashboard } from "@/types/ApiTypes";
 import { BodyToGetListOfRules } from "@/types/ApiTypes";
